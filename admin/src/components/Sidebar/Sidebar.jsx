@@ -39,7 +39,7 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <Link to="/products" style={{ textDecoration: 'none' }}>
+          <Link to="/bonds" style={{ textDecoration: 'none' }}>
             <li>
               <FeedOutlined className="icon" />
               <span>Bonds</span>

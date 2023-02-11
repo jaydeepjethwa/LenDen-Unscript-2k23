@@ -61,180 +61,33 @@ export const transactions = [
 ];
 
 
-
-//temporary data
-export const userRows = [
+// Bonds DAta
+export const bondsData = [
   {
-    id: 1,
-    username: "Snow",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    status: "active",
-    email: "1snow@gmail.com",
-    age: 35,
+    id: 2342355,
+    bond: 'Muthoot Fin. Ltd. Series VII',
+    issuerName: 'Muthoot Finance Limited',
+    rating: 'AA+',
+    minInvest: '10000',
+    yield: '8.6',
+    tenure: '61',
   },
   {
-    id: 2,
-    username: "Jamie Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "2snow@gmail.com",
-    status: "passive",
-    age: 42,
+    id: 3465767,
+    bond: 'Muthoot Fin. Ltd. Series VI',
+    issuerName: 'Muthoot Finance Limited',
+    rating: 'AA+',
+    minInvest: '10000',
+    yield: '8.5',
+    tenure: '37',
   },
   {
-    id: 3,
-    username: "Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "3snow@gmail.com",
-    status: "pending",
-    age: 45,
+    id: 1234646,
+    bond: 'Indore Municipal Corporation',
+    issuerName: 'Indore Municipal Corporation',
+    rating: 'AA+',
+    minInvest: '10000',
+    yield: '8.42',
+    tenure: '108',
   },
-  {
-    id: 4,
-    username: "Stark",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "4snow@gmail.com",
-    status: "active",
-    age: 16,
-  },
-  {
-    id: 5,
-    username: "Targaryen",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "5snow@gmail.com",
-    status: "passive",
-    age: 22,
-  },
-  {
-    id: 6,
-    username: "Melisandre",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "6snow@gmail.com",
-    status: "active",
-    age: 15,
-  },
-  {
-    id: 7,
-    username: "Clifford",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "7snow@gmail.com",
-    status: "passive",
-    age: 44,
-  },
-  {
-    id: 8,
-    username: "Frances",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "8snow@gmail.com",
-    status: "active",
-    age: 36,
-  },
-  {
-    id: 9,
-    username: "Roxie",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "snow@gmail.com",
-    status: "pending",
-    age: 65,
-  },
-  {
-    id: 10,
-    username: "Roxie",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "snow@gmail.com",
-    status: "active",
-    age: 65,
-  },
-  {
-    id: 11,
-    username: "Stark",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "4snow@gmail.com",
-    status: "active",
-    age: 16,
-  },
-  {
-    id: 12,
-    username: "Stark",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "4snow@gmail.com",
-    status: "active",
-    age: 16,
-  },
-];
-
-export const userInputs = [
-    {
-      id: 1,
-      label: "Username",
-      type: "text",
-      placeholder: "john_doe",
-    },
-    {
-      id: 2,
-      label: "Name and surname",
-      type: "text",
-      placeholder: "John Doe",
-    },
-    {
-      id: 3,
-      label: "Email",
-      type: "mail",
-      placeholder: "john_doe@gmail.com",
-    },
-    {
-      id: 4,
-      label: "Phone",
-      type: "text",
-      placeholder: "+1 234 567 89",
-    },
-    {
-      id: 5,
-      label: "Password",
-      type: "password",
-    },
-    {
-      id: 6,
-      label: "Address",
-      type: "text",
-      placeholder: "Elton St. 216 NewYork",
-    },
-    {
-      id: 7,
-      label: "Country",
-      type: "text",
-      placeholder: "USA",
-    },
-  ];
-  
-  export const productInputs = [
-    {
-      id: 1,
-      label: "Title",
-      type: "text",
-      placeholder: "Apple Macbook Pro",
-    },
-    {
-      id: 2,
-      label: "Description",
-      type: "text",
-      placeholder: "Description",
-    },
-    {
-      id: 3,
-      label: "Category",
-      type: "text",
-      placeholder: "Computers",
-    },
-    {
-      id: 4,
-      label: "Price",
-      type: "text",
-      placeholder: "100",
-    },
-    {
-      id: 5,
-      label: "Stock",
-      type: "text",
-      placeholder: "in stock",
-    },
-  ];
+]
