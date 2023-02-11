@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import 'bootstrap/dist/js/bootstrap.bundle.min'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   Login,
@@ -20,10 +20,17 @@ import {
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData, usersData1 } from './constants';
 // import { baseUrl } from './apis/config';
-import { fetchUsersData } from './apis/UserDataApis';
+import {
+  fetchUsersData,
+  fetchUnverifiedUserCountData,
+  fetchUsersCountData,
+} from './apis/UserDataApis';
+import { baseUrl } from './apis/config';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
+  const [userCount, setUserCount] = useState();
+  const [unverifiedUserCount, setUnverifiedUserCount] = useState();
   // const [bondsData, setBondsData] = useState([]);
 
   // useEffect(() => {
@@ -47,17 +54,35 @@ function App() {
       const data = await fetchUsersData();
       // console.log(data[0].profile_photo)
       setUsersData(data);
+      setUserCount(data.length);
     };
 
     fetchUsers();
-  }, []);
+  }, [usersData.length]);
+
+  useEffect(() => {
+    const fetchUnverifiedUserCount = async () => {
+      const data = await fetchUnverifiedUserCountData();
+      setUnverifiedUserCount(data);
+    };
+
+    fetchUnverifiedUserCount();
+  }, [unverifiedUserCount]);
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
+            <Route
+              index
+              element={
+                <Home
+                  userCount={userCount}
+                  unverifiedUserCount={unverifiedUserCount}
+                />
+              }
+            />
             <Route path="login" element={<Login />} />
           </Route>
 

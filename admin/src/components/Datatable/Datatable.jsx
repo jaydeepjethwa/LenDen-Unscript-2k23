@@ -105,6 +105,18 @@ const DataTable = ({ data }) => {
     );
   }
 
+  const handleKycStatus = async (userId) => {
+    
+    try {
+      const {data} = await axios.post(`http://192.168.137.147:8000/user/approve-kyc/${userId}`)
+      console.log(data)
+      window.location.reload()
+      // console.log(userId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   const actionColumn = [
     {
       field: 'action',
@@ -159,10 +171,9 @@ const DataTable = ({ data }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-              {/* checked={params.row.kyc_completed === 1 ? true : false} */}
             <GreenSwitch
               checked={params.row.kyc_completed === 1 ? true : false}
-              onClick={() => handleVerified(params.row.id)}
+              onClick={() => handleKycStatus(params.row.user_id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
             <label>

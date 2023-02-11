@@ -11,9 +11,9 @@ import {
   TableList,
 } from '../../components';
 
-const Home = () => {
-  const [userCount, setUserCount] = useState(0);
-  const [unverifiedUserCount, setUnverifiedUserCount] = useState(0);
+const Home = ({ userCount, unverifiedUserCount }) => {
+  // const [userCount, setUserCount] = useState(0);
+  // const [unverifiedUserCount, setUnverifiedUserCount] = useState(0);
 
   // useEffect(() => {
   //   const fetchUnverifiedUserCountData = async () => {
@@ -48,8 +48,8 @@ const Home = () => {
         <Navbar />
 
         <div className="widgets">
-          <Widget type="users" stat={userCount} />
-          <Widget type="orders" stat={25} />
+          <Widget type="users" userCount={userCount} />
+          <Widget type="kyc" unverifiedUserCount={unverifiedUserCount} />
           <Widget type="earnings" stat={300} />
           <Widget type="balance" stat={500} />
         </div>

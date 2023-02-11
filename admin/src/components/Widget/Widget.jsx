@@ -11,16 +11,19 @@ import axios from 'axios';
 
 import './Widget.scss';
 import { baseUrl } from '../../apis/config';
-import { fetchUnverifiedUserCountData, fetchUsersCountData } from '../../apis/UserDataApis';
+import {
+  fetchUnverifiedUserCountData,
+  fetchUsersCountData,
+} from '../../apis/UserDataApis';
 
-const Widget = ({ type }) => {
+const Widget = ({ type, userCount, unverifiedUserCount }) => {
   let data;
 
   const amount = 100;
   const diff = 20;
 
-  const [userCount, setUserCount] = useState();
-  const [unverifiedUserCount, setUnverifiedUserCount] = useState();
+  // const [userCount, setUserCount] = useState();
+  // const [unverifiedUserCount, setUnverifiedUserCount] = useState();
 
   switch (type) {
     case 'users':
@@ -38,7 +41,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case 'orders':
+    case 'kyc':
       data = {
         title: 'KYC PENDING',
         isMoney: false,
@@ -88,41 +91,43 @@ const Widget = ({ type }) => {
       break;
   }
 
-  useEffect(() => {
-    const fetchUnverifiedUserCount = async () => {
-      const data = await fetchUnverifiedUserCountData()
-      setUnverifiedUserCount(data)
-    };
+  // useEffect(() => {
+  //   const fetchUsersCountData = async () => {
+  //     try {
+  //       const { data } = await axios.get(`${baseUrl}/user/all`);
+  //       // console.log(data.length);
+  //       // setUserCount(data.length);
+  //       return data.length;
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
 
-    fetchUnverifiedUserCount()
+  //   fetchUsersCountData();
 
-    // Fetch 
-    const fetchUsersCountData = async () => {
-      try {
-        const { data } = await axios.get(`${baseUrl}/user/all`);
-        // console.log(data.length);
-        setUserCount(data.length);
-        return data.length;
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  //   // console.log(userCount)
+  // }, [userCount]);
 
-    
-    fetchUsersCountData();
+  // useEffect(() => {
+  //   const fetchUnverifiedUserCount = async () => {
+  //     const data = await fetchUnverifiedUserCountData();
+  //     // setUnverifiedUserCount(data);
+  //   };
 
-    // console.log(userCount)
-  }, []);
+  //   fetchUnverifiedUserCount();
+  // }, [unverifiedUserCount]);
 
   return (
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        {data.stat ? 
-        <span className="counter">
-          {data.isMoney && <>&#8377;</>} {data.stat}
-        </span> : <p>loading...</p>
-        }
+        {data.stat ? (
+          <span className="counter">
+            {data.isMoney && <>&#8377;</>} {data.stat}
+          </span>
+        ) : (
+          <p>loading...</p>
+        )}
         <Link
           to={data.linkTo}
           style={{ textDecoration: 'none', color: 'inherit' }}
