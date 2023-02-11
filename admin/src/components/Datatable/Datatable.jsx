@@ -114,7 +114,7 @@ const DataTable = ({ data }) => {
         return (
           <div className="cellAction">
             {currentPath === '/users' && (
-              <Link to={`/users/view/${params.row.id}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/users/view/${params.row.user_id}`} style={{ textDecoration: 'none' }}>
                 <div className="viewButton">View</div>
               </Link>
             )}
@@ -161,12 +161,12 @@ const DataTable = ({ data }) => {
           <div className="cellAction">
               {/* checked={params.row.kyc_completed === 1 ? true : false} */}
             <GreenSwitch
-              checked={params.row.kyc_completed}
+              checked={params.row.kyc_completed === 1 ? true : false}
               onClick={() => handleVerified(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
             <label>
-              {params.row.isVerified === 1 ? 'Approved' : 'Not Approved'}
+              {params.row.kyc_completed === 1 ? 'Completed' : 'Not Completed'}
             </label>
           </div>
         );

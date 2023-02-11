@@ -17,7 +17,8 @@ import {
 } from './pages';
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData, usersData1 } from './constants';
-import { baseUrl } from './services/config';
+// import { baseUrl } from './apis/config';
+import { fetchUsersData } from './apis/UserDataApis';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -39,17 +40,14 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    const fetchUsersData = async () => {
-      try {
-        const {data} = await axios.get(`${baseUrl}/user/all`);
-        // console.log(data)
-        setUsersData(data)
-      } catch (err) {
-        console.error(err);
-      }
+    // Fetch all Users Data
+    const fetchUsers = async () => {
+      const data = await fetchUsersData();
+      // console.log(data[0].profile_photo)
+      setUsersData(data);
     };
 
-    fetchUsersData()
+    fetchUsers();
   }, []);
 
   return (

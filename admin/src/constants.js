@@ -112,3 +112,18 @@ export const ordersData = [
     amount: '30000',
   },
 ]
+
+export const usersData1 = [
+  {
+    id: "1234235",
+    name: "Jane Doe",
+    contact_no: "12345677890",
+    email: "asdf@email.com",
+    wallet: 100000,
+    kyc_completed: 1,
+    profile_photo: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+    address_proof: "",
+    bank_detail: "",
+    pan_card: "",
+  },
+]

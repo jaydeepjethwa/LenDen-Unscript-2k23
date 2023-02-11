@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './Widget.scss';
-import { baseUrl } from '../../services/config';
+import { baseUrl } from '../../apis/config';
+import { fetchUnverifiedUserCountData, fetchUsersCountData } from '../../apis/UserDataApis';
 
 const Widget = ({ type }) => {
   let data;
@@ -18,8 +19,8 @@ const Widget = ({ type }) => {
   const amount = 100;
   const diff = 20;
 
-  const [userCount, setUserCount] = useState(0);
-  const [unverifiedUserCount, setUnverifiedUserCount] = useState(0);
+  const [userCount, setUserCount] = useState();
+  const [unverifiedUserCount, setUnverifiedUserCount] = useState();
 
   switch (type) {
     case 'users':
@@ -32,7 +33,7 @@ const Widget = ({ type }) => {
         icon: (
           <PersonOutlined
             className="icon"
-            style={{ color: 'crimson', backgroundColor: 'rgba(255, 0, 0, 0.2' }}
+            style={{ color: 'green', backgroundColor: 'rgba(0, 128, 0, 0.2' }}
           />
         ),
       };
@@ -45,12 +46,9 @@ const Widget = ({ type }) => {
         linkTo: '/users',
         stat: unverifiedUserCount,
         icon: (
-          <ShoppingCartOutlined
+          <PersonOutlined
             className="icon"
-            style={{
-              color: 'goldenrod',
-              backgroundColor: 'rgba(218, 165, 32, 0.2',
-            }}
+            style={{ color: 'crimson', backgroundColor: 'rgba(255, 0, 0, 0.2' }}
           />
         ),
       };
@@ -91,29 +89,26 @@ const Widget = ({ type }) => {
   }
 
   useEffect(() => {
-    const fetchUnverifiedUserCountData = async () => {
-      try {
-        const res = await axios.get(
-          `${baseUrl}/user/unverified-count`
-        );
-        // console.log(res.data);
-        setUnverifiedUserCount((prev) => res.data);
-      } catch (err) {
-        console.error(err);
-      }
+    const fetchUnverifiedUserCount = async () => {
+      const data = await fetchUnverifiedUserCountData()
+      setUnverifiedUserCount(data)
     };
 
+    fetchUnverifiedUserCount()
+
+    // Fetch 
     const fetchUsersCountData = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/user/all`);
-        // console.log(res.data.length);
-        setUserCount((prev) => res.data.length);
+        const { data } = await axios.get(`${baseUrl}/user/all`);
+        // console.log(data.length);
+        setUserCount(data.length);
+        return data.length;
       } catch (err) {
         console.error(err);
       }
     };
 
-    fetchUnverifiedUserCountData();
+    
     fetchUsersCountData();
 
     // console.log(userCount)
@@ -123,18 +118,23 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
+        {data.stat ? 
         <span className="counter">
           {data.isMoney && <>&#8377;</>} {data.stat}
-        </span>
-        <Link to={data.linkTo} style={{textDecoration: "none", color: "inherit"}}>
+        </span> : <p>loading...</p>
+        }
+        <Link
+          to={data.linkTo}
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
           <span className="link">{data.link}</span>
         </Link>
       </div>
       <div className="right">
-        <div className="percentage positive">
+        {/* <div className="percentage positive">
           <KeyboardArrowUpOutlined />
           {diff}%
-        </div>
+        </div> */}
         {data.icon}
       </div>
     </div>
