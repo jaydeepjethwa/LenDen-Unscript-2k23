@@ -108,8 +108,8 @@ const DataTable = ({ data }) => {
   const actionColumn = [
     {
       field: 'action',
-      headerName: 'Action',
-      width: 100,
+      headerName: 'View Details',
+      width: 130,
       renderCell: (params) => {
         return (
           <div className="cellAction">

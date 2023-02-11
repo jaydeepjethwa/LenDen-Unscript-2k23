@@ -17,7 +17,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="logo">My Dashboard</span>
+          <span className="logo">Admin Dashboard</span>
         </Link>
       </div>
       <hr />
@@ -57,7 +57,7 @@ const Sidebar = () => {
           <Link to="/banners" style={{ textDecoration: 'none' }}>
             <li>
               <ViewCarouselOutlined className="icon" />
-              <span>Banners</span>
+              <span>Featured Bonds</span>
             </li>
           </Link>
 
