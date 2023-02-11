@@ -9,57 +9,49 @@ export const chartData = [
 
 export const transactions = [
   {
-    id: 1143155,
-    product: 'Acer Nitro 5',
-    img: 'https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_UY327_FMwebp_QL65_.jpg',
-    customer: 'John Smith',
-    date: '1 March',
-    amount: 785,
-    method: 'Cash on Delivery',
-    status: 'Approved',
+    transaction_id: 1143155,
+    bond_id: '1234455',
+    transaction_price: '12345',
+    quantity: '25',
+    transaction_time: '1 March',
+    type: 'buy',
   },
   {
-    id: 2235235,
-    product: 'Playstation 5',
-    img: 'https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_UY327_FMwebp_QL65_.jpg',
-    customer: 'Michael Doe',
-    date: '1 March',
-    amount: 900,
-    method: 'Online Payment',
-    status: 'Pending',
+    transaction_id: 2235235,
+    bond_id: '3465434',
+    transaction_price: '8765434',
+    transaction_time: '1 March',
+    quantity: 900,
+    type: 'buy',
   },
   {
-    id: 2342353,
-    product: 'Redragon S101',
-    img: 'https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_UY327_FMwebp_QL65_.jpg',
-    customer: 'John Smith',
-    date: '1 March',
-    amount: 35,
-    method: 'Cash on Delivery',
-    status: 'Pending',
+    transaction_id: 2342353,
+    bond_id: '9876544',
+    transaction_price: '100000',
+    transaction_time: '1 March',
+    transaction_price: 35,
+    quantity: 240,
+    type: 'sell',
   },
   {
-    id: 2357741,
-    product: 'Razer Blade 15',
-    img: 'https://m.media-amazon.com/images/I/71wF7YDIQkL._AC_UY327_FMwebp_QL65_.jpg',
-    customer: 'Jane Smith',
-    date: '1 March',
-    amount: 920,
-    method: 'Online',
-    status: 'Approved',
+    transaction_id: 2357741,
+    bond_id: '3457998',
+    transaction_price: '350000',
+    transaction_time: '1 March',
+    transaction_price: 920,
+    quantity: 50,
+    type: 'buy',
   },
   {
-    id: 2342355,
-    product: 'ASUS ROG Strix',
-    img: 'https://m.media-amazon.com/images/I/81hH5vK-MCL._AC_UY327_FMwebp_QL65_.jpg',
-    customer: 'Harold Carol',
-    date: '1 March',
-    amount: 2000,
-    method: 'Online',
-    status: 'Pending',
+    transaction_id: 2342355,
+    bond_id: '081244',
+    transaction_price: '23000',
+    transaction_time: '1 March',
+    transaction_price: 2000,
+    quantity: 370,
+    type: 'sell',
   },
 ];
-
 
 // Bonds DAta
 export const bondsData = [
@@ -90,8 +82,7 @@ export const bondsData = [
     yield: '8.42',
     tenure: '108',
   },
-]
-
+];
 
 // Orders DAta
 export const ordersData = [
@@ -111,19 +102,20 @@ export const ordersData = [
     soldBy: 'Muthoot Finance Limited',
     amount: '30000',
   },
-]
+];
 
 export const usersData1 = [
   {
-    id: "1234235",
-    name: "Jane Doe",
-    contact_no: "12345677890",
-    email: "asdf@email.com",
+    id: '1234235',
+    name: 'Jane Doe',
+    contact_no: '12345677890',
+    email: 'asdf@email.com',
     wallet: 100000,
     kyc_completed: 1,
-    profile_photo: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    address_proof: "",
-    bank_detail: "",
-    pan_card: "",
+    profile_photo:
+      'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+    address_proof: '',
+    bank_detail: '',
+    pan_card: '',
   },
-]
+];

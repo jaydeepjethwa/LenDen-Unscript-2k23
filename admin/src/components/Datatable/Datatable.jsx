@@ -124,21 +124,17 @@ const DataTable = ({ data }) => {
       console.error(err);
     }
   };
-  // /bond/featured-status/id
+
+  // Toggle isFeatured Status
   const handleIsFeaturedBonds = async (bondId, isFeatured) => {
-    let updatedStatus;
     try {
       if (isFeatured === 1) {
-        // updatedStatus = 0;
-        // console.log(bondId, updatedStatus);
         const { data } = await axios.post(`${baseUrl}/bond/featured-status/`, {
           bond_id: bondId,
           status: 0,
         });
         window.location.reload();
       } else if (isFeatured === 0) {
-        // updatedStatus = 1;
-        // console.log(bondId, updatedStatus);
         const { data } = await axios.post(`${baseUrl}/bond/featured-status/`, {
           bond_id: bondId,
           status: 1,
