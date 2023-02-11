@@ -14,6 +14,8 @@ class LoginScreen extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
+        key: controller.formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
           child: Column(
@@ -26,22 +28,9 @@ class LoginScreen extends GetView<LoginController> {
                 height: 200.0,
               ),
               verticalSpacing(vs1),
-              // Text(
-              //   "Login",
-              //   style: header1,
-              // ),
-              // verticalSpacing(vs1),
-              // Text(
-              //   "Please sign in to continue",
-              //   style: normalText,
-              // ),
               verticalSpacing(vs1 * 2),
-              // const CustomFormField(
-              //   formFieldTitle: "Email Id",
-              // ),
               CustomTextField(
                 capitalization: false,
-                maxCharacters: 10,
                 keyboardType: TextInputType.emailAddress,
                 textController: controller.emailC,
                 hint: "Email Id",
@@ -63,7 +52,7 @@ class LoginScreen extends GetView<LoginController> {
               CustomLongButton(
                 buttonText: "Login",
                 onPressedFunction: () {
-                  Get.toNamed("/otp");
+                  controller.handleApiCall();
                 },
               ),
             ],

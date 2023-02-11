@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class KeyscreenController extends GetxController {
-  late TextEditingController nameC, phoneC;
-  String name = "", phone = "";
+class WalletController extends GetxController {
+  late TextEditingController moneyC;
+  var money = "";
 
   @override
   void onInit() {
@@ -12,13 +12,11 @@ class KeyscreenController extends GetxController {
   }
 
   void initializeController() {
-    nameC = TextEditingController();
-    phoneC = TextEditingController();
+    moneyC = TextEditingController();
   }
 
   void disposeController() {
-    nameC.dispose();
-    phoneC.dispose();
+    moneyC.dispose();
   }
 
   @override

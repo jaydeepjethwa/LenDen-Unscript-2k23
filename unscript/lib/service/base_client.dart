@@ -72,10 +72,9 @@ class BaseClient {
   dynamic _processResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:
-        print("hhello");
-        return json.decode(response.body);
+        return response;
       case 201:
-        return json.decode(response.body);
+        return response;
       case 202:
         throw BadRequestException(json.decode(response.body)["message"],
             response.request?.url.toString() ?? "");

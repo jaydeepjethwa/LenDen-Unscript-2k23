@@ -1,10 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:unscript/constant/constant.dart';
 import 'package:unscript/service/base_client.dart';
+import 'package:unscript/service/error_controller.dart';
 import 'package:unscript/utils/dialog_helper.dart';
 
-class LoginController extends GetxController {
+class LoginController extends GetxController with ErrorController {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   late TextEditingController emailC;
   String email = "";
 
@@ -20,23 +25,38 @@ class LoginController extends GetxController {
 
   Future<bool> apiCall() async {
     String url = "$baseUrl/auth/login";
-    dynamic payload = {
-      "email": email,
+    dynamic header = {
+      "Content-type": "application/json",
     };
-    var response = await BaseClient().postRequestWithoutHeader(url, payload);
+    dynamic payload = json.encode(
+      {
+        "email": email,
+      },
+    );
+    var response = await BaseClient()
+        .postRequest(url, payload, header)
+        .catchError(handleError);
     if (response != null) {
-      storage.write("userId", response["user_id"]);
-      storage.write("kyc", response["kyc_completed"]);
-      storage.write("token", response["access_token"]);
-      storage.write("otp", response["otp"]);
+      var jsonResponse = json.decode(response.body);
+      storage.write("userId", jsonResponse["user_id"]);
+      storage.write("token", jsonResponse["access_token"]);
+      storage.write("otp", jsonResponse["otp"]);
       return true;
     }
     return false;
   }
 
   void handleApiCall() async {
-    DialogHelper.showLoader("Processing");
-    bool response = await apiCall();
+    if (formKey.currentState!.validate()) {
+      DialogHelper.showLoader("Processing");
+      formKey.currentState!.save();
+      bool response = await apiCall();
+      if (response) {
+        Get.toNamed("/otp");
+      } else {
+        Get.back();
+      }
+    }
   }
 
   void disposeController() {

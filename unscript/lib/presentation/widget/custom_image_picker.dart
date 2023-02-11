@@ -10,7 +10,12 @@ import 'package:unscript/utils/dialog_helper.dart';
 class CustomImagePicker extends StatefulWidget {
   final String note;
   final IconData icon;
-  const CustomImagePicker({super.key, required this.note, required this.icon});
+  final Function(String?) setImage;
+  const CustomImagePicker(
+      {super.key,
+      required this.note,
+      required this.icon,
+      required this.setImage});
 
   @override
   State<CustomImagePicker> createState() => _CustomImagePickerState();
@@ -23,7 +28,11 @@ class _CustomImagePickerState extends State<CustomImagePicker> {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.camera);
       if (image == null) return;
-      setState(() => imagePath = image.path);
+      setState(() {
+        imagePath = image.path;
+        print(imagePath);
+        widget.setImage(imagePath);
+      });
     } on PlatformException catch (_) {
       DialogHelper.showErrorDialog("LENDEN", "Some error occured.");
     }
