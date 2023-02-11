@@ -16,6 +16,7 @@ import {
   NewBanner,
   Settings,
   UserProfile,
+  NewBond,
 } from './pages';
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData, usersData1 } from './constants';
@@ -103,29 +104,26 @@ function App() {
           <Route path="users">
             <Route index element={<List data={usersData} />} />
             <Route path="view/:id" element={<UserProfile />} />
-            <Route
+            {/* <Route
               path="new"
               element={<New inputs={'userInputs'} title="Add New User" />}
-            />
+            /> */}
           </Route>
 
           <Route path="bonds">
             <Route index element={<List data={bondsData} />} />
             <Route path="view/:id" element={<Single />} />
-            <Route
-              path="new"
-              element={<New inputs={'productInputs'} title="Add New Product" />}
-            />
+            <Route path="new" element={<NewBond />} />
           </Route>
 
-          <Route path="orders">
+          {/* <Route path="orders">
             <Route index element={<List data={ordersData} />} />
             <Route path=":productId" element={<Single />} />
             <Route
               path="new"
               element={<New inputs={'productInputs'} title="Add New Product" />}
             />
-          </Route>
+          </Route> */}
 
           <Route path="banners">
             <Route index element={<Banner />} />

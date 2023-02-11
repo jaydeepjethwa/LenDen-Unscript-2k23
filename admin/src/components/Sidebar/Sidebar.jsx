@@ -7,6 +7,7 @@ import {
   ViewCarouselOutlined,
   SettingsOutlined,
   LogoutOutlined,
+  NoteAddOutlined,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
@@ -58,6 +59,13 @@ const Sidebar = () => {
             <li>
               <ViewCarouselOutlined className="icon" />
               <span>Featured Bonds</span>
+            </li>
+          </Link>
+
+          <Link to="/banners" style={{ textDecoration: 'none' }}>
+            <li>
+              <NoteAddOutlined className="icon" />
+              <span>Create Bonds</span>
             </li>
           </Link>
 
