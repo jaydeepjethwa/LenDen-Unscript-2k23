@@ -25,13 +25,16 @@ import {
   fetchUnverifiedUserCountData,
   fetchUsersCountData,
 } from './apis/UserDataApis';
+import { fetchBondsData } from './apis/BondsDataApis';
 import { baseUrl } from './apis/config';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
   const [userCount, setUserCount] = useState();
+
+  const [bondsData, setBondsData] = useState([]);
+
   const [unverifiedUserCount, setUnverifiedUserCount] = useState();
-  // const [bondsData, setBondsData] = useState([]);
 
   // useEffect(() => {
   //   // Fetch Users data
@@ -48,11 +51,10 @@ function App() {
   //   // Fetch Bonds Data
   // }, []);
 
+  // Fetch Users Data
   useEffect(() => {
-    // Fetch all Users Data
     const fetchUsers = async () => {
       const data = await fetchUsersData();
-      // console.log(data[0].profile_photo)
       setUsersData(data);
       setUserCount(data.length);
     };
@@ -60,6 +62,7 @@ function App() {
     fetchUsers();
   }, [usersData.length]);
 
+  // Fetch unverified kyc widget data
   useEffect(() => {
     const fetchUnverifiedUserCount = async () => {
       const data = await fetchUnverifiedUserCountData();
@@ -68,6 +71,17 @@ function App() {
 
     fetchUnverifiedUserCount();
   }, [unverifiedUserCount]);
+
+  //Fetch bonds data
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const data = await fetchBondsData();
+      setBondsData(data);
+      // setUserCount(data.length);
+    };
+
+    fetchUsers();
+  }, [usersData.length]);
 
   return (
     <div className="App">

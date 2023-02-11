@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
@@ -8,6 +8,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { green } from '@mui/material/colors';
 import './Datatable.scss';
+import { baseUrl } from '../../apis/config';
 
 const initialSort = [
   {
@@ -17,20 +18,24 @@ const initialSort = [
 ];
 
 const usersColumns = [
-  { field: 'user_id', headerName: 'User ID', width: 70 },
+  // { field: 'user_id', headerName: 'User ID', width: 70 },
   { field: 'name', headerName: 'User Name', width: 200 },
   { field: 'email', headerName: 'User Email', width: 200 },
   { field: 'contact_no', headerName: 'User Phone No.', width: 200 },
 ];
 
 const bondsColumns = [
-  { field: 'id', headerName: 'ID', width: 120 },
-  { field: 'bond', headerName: 'Bond Name', width: 220 },
-  { field: 'issuerName', headerName: 'Issuer Name', width: 250 },
-  { field: 'rating', headerName: 'Rating', width: 100 },
-  { field: 'minInvest', headerName: 'Min. Investment (Rs.)', width: 150 },
-  { field: 'yield', headerName: 'Yield (%)', width: 100 },
-  { field: 'tenure', headerName: 'Tenure (months)', width: 150 },
+  // { field: 'bond_id', headerName: 'ID', width: 120 },
+  { field: 'companyName', headerName: 'Company Name', width: 250 },
+  { field: 'Symbol', headerName: 'Symbol', width: 100 },
+  { field: 'Series', headerName: 'Series', width: 100 },
+  { field: 'BondType', headerName: 'Bond Type', width: 130 },
+  { field: 'credit_rating', headerName: 'Rating', width: 100 },
+  { field: 'PercentageChange', headerName: '%age Change', width: 120 },
+  { field: 'Qty', headerName: 'Quantity', width: 80 },
+  { field: 'CouponRate', headerName: 'Coupon Rate (%)', width: 150 },
+  // { field: 'released_on', headerName: 'Released On', width: 130 },
+  // { field: 'maturity_date', headerName: 'Maturity Date', width: 130 },
 ];
 
 const ordersColumns = [
@@ -44,6 +49,8 @@ const ordersColumns = [
 
 const DataTable = ({ data }) => {
   const currentPath = useLocation().pathname;
+  const navigate = useNavigate();
+  // const [isFeatured, setIsFeatured] = useState(0)
 
   // console.log(currentPath);
 
@@ -82,7 +89,7 @@ const DataTable = ({ data }) => {
       { id }
     );
   };
-  
+
   async function handleVerified(id) {
     verified(id);
     window.location.reload();
@@ -106,16 +113,42 @@ const DataTable = ({ data }) => {
   }
 
   const handleKycStatus = async (userId) => {
-    
     try {
-      const {data} = await axios.post(`http://192.168.137.147:8000/user/approve-kyc/${userId}`)
-      console.log(data)
-      window.location.reload()
+      const { data } = await axios.post(
+        `http://192.168.137.147:8000/user/approve-kyc/${userId}`
+      );
+      console.log(data);
+      window.location.reload();
       // console.log(userId)
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
+  // /bond/featured-status/id
+  const handleIsFeaturedBonds = async (bondId, isFeatured) => {
+    let updatedStatus;
+    try {
+      if (isFeatured === 1) {
+        // updatedStatus = 0;
+        // console.log(bondId, updatedStatus);
+        const { data } = await axios.post(`${baseUrl}/bond/featured-status/`, {
+          bond_id: bondId,
+          status: 0,
+        });
+        window.location.reload();
+      } else if (isFeatured === 0) {
+        // updatedStatus = 1;
+        // console.log(bondId, updatedStatus);
+        const { data } = await axios.post(`${baseUrl}/bond/featured-status/`, {
+          bond_id: bondId,
+          status: 1,
+        });
+        window.location.reload();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const actionColumn = [
     {
@@ -126,13 +159,19 @@ const DataTable = ({ data }) => {
         return (
           <div className="cellAction">
             {currentPath === '/users' && (
-              <Link to={`/users/view/${params.row.user_id}`} style={{ textDecoration: 'none' }}>
+              <Link
+                to={`/users/view/${params.row.user_id}`}
+                style={{ textDecoration: 'none' }}
+              >
                 <div className="viewButton">View</div>
               </Link>
             )}
 
             {currentPath === '/bonds' && (
-              <Link to={`/bonds/view/${params.row.id}`} style={{ textDecoration: 'none' }}>
+              <Link
+                to={`/bonds/view/${params.row.id}`}
+                style={{ textDecoration: 'none' }}
+              >
                 <div className="viewButton">View</div>
               </Link>
             )}
@@ -162,7 +201,7 @@ const DataTable = ({ data }) => {
   //   },
   // ];
 
-  const actionVerified = [
+  const actionKyc = [
     {
       field: 'kyc_completed',
       headerName: 'KYC Status',
@@ -185,6 +224,32 @@ const DataTable = ({ data }) => {
     },
   ];
 
+  const actionfeaturedBonds = [
+    {
+      field: 'is_featured',
+      headerName: 'Is Featured',
+      width: 200,
+      type: 'string',
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <GreenSwitch
+              checked={params.row.is_featured === 1 ? true : false}
+              onClick={() =>
+                handleIsFeaturedBonds(
+                  params.row.bond_id,
+                  params.row.is_featured
+                )
+              }
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+            <label>{params.row.is_featured === 1 ? 'Yes' : 'No'}</label>
+          </div>
+        );
+      },
+    },
+  ];
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -193,23 +258,26 @@ const DataTable = ({ data }) => {
           Add New
         </Link>
       </div>
-      {currentPath === '/users' && (
+      {currentPath === '/users' && data && (
         <DataGrid
           className="datagrid"
           getRowId={(row) => row.user_id}
           rows={data}
-          columns={usersColumns.concat(actionVerified).concat(actionColumn)}
+          columns={usersColumns.concat(actionKyc).concat(actionColumn)}
           pageSize={9}
           rowsPerPageOptions={[9]}
           checkboxSelection
         />
       )}
 
-      {currentPath === '/bonds' && (
+      {currentPath === '/bonds' && data && (
         <DataGrid
           className="datagrid"
+          getRowId={(row) => row.bond_id}
           rows={data}
-          columns={bondsColumns.concat(actionColumn)}
+          columns={bondsColumns
+            .concat(actionfeaturedBonds)
+            .concat(actionColumn)}
           pageSize={9}
           rowsPerPageOptions={[9]}
           checkboxSelection
