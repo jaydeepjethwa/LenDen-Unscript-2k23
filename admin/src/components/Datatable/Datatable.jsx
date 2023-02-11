@@ -17,10 +17,10 @@ const initialSort = [
 ];
 
 const usersColumns = [
-  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'user_id', headerName: 'User ID', width: 70 },
   { field: 'name', headerName: 'User Name', width: 200 },
   { field: 'email', headerName: 'User Email', width: 200 },
-  { field: 'phone', headerName: 'User Phone-no', width: 200 },
+  { field: 'contact_no', headerName: 'User Phone No.', width: 200 },
 ];
 
 const bondsColumns = [
@@ -82,6 +82,7 @@ const DataTable = ({ data }) => {
       { id }
     );
   };
+  
   async function handleVerified(id) {
     verified(id);
     window.location.reload();
@@ -104,7 +105,6 @@ const DataTable = ({ data }) => {
     );
   }
 
-
   const actionColumn = [
     {
       field: 'action',
@@ -113,51 +113,60 @@ const DataTable = ({ data }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: 'none' }}>
-              <div className="viewButton">View</div>
-            </Link>
+            {currentPath === '/users' && (
+              <Link to={`/users/view/${params.row.id}`} style={{ textDecoration: 'none' }}>
+                <div className="viewButton">View</div>
+              </Link>
+            )}
+
+            {currentPath === '/bonds' && (
+              <Link to={`/bonds/view/${params.row.id}`} style={{ textDecoration: 'none' }}>
+                <div className="viewButton">View</div>
+              </Link>
+            )}
           </div>
         );
       },
     },
   ];
 
-  const actionStatus = [
-    {
-      field: 'status',
-      headerName: 'isActive',
-      width: 150,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <RedSwitch
-              checked={params.row.isActive == 0 ? true : false}
-              onClick={() => handleStatus(params.row.id)}
-              inputProps={{ 'aria-label': 'controlled' }}
-            />
-            <label>{params.row.isActive == 0 ? 'Disable' : 'Enable'}</label>
-          </div>
-        );
-      },
-    },
-  ];
+  // const actionStatus = [
+  //   {
+  //     field: 'status',
+  //     headerName: 'isActive',
+  //     width: 150,
+  //     renderCell: (params) => {
+  //       return (
+  //         <div className="cellAction">
+  //           <RedSwitch
+  //             checked={params.row.isActive == 0 ? true : false}
+  //             onClick={() => handleStatus(params.row.id)}
+  //             inputProps={{ 'aria-label': 'controlled' }}
+  //           />
+  //           <label>{params.row.isActive == 0 ? 'Disable' : 'Enable'}</label>
+  //         </div>
+  //       );
+  //     },
+  //   },
+  // ];
 
   const actionVerified = [
     {
-      field: 'verified',
+      field: 'kyc_completed',
       headerName: 'KYC Status',
       width: 200,
       type: 'string',
       renderCell: (params) => {
         return (
           <div className="cellAction">
+              {/* checked={params.row.kyc_completed === 1 ? true : false} */}
             <GreenSwitch
-              checked={params.row.isVerified == 1 ? true : false}
+              checked={params.row.kyc_completed}
               onClick={() => handleVerified(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
             <label>
-              {params.row.isVerified == 1 ? 'Approved' : 'Not Approved'}
+              {params.row.isVerified === 1 ? 'Approved' : 'Not Approved'}
             </label>
           </div>
         );
@@ -176,8 +185,9 @@ const DataTable = ({ data }) => {
       {currentPath === '/users' && (
         <DataGrid
           className="datagrid"
+          getRowId={(row) => row.user_id}
           rows={data}
-          columns={usersColumns.concat(actionColumn).concat(actionVerified)}
+          columns={usersColumns.concat(actionVerified).concat(actionColumn)}
           pageSize={9}
           rowsPerPageOptions={[9]}
           checkboxSelection

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './Widget.scss';
+import { baseUrl } from '../../services/config';
 
 const Widget = ({ type }) => {
   let data;
@@ -23,7 +24,7 @@ const Widget = ({ type }) => {
   switch (type) {
     case 'users':
       data = {
-        title: 'USERS',
+        title: 'TOTAL USERS',
         isMoney: false,
         link: 'See all Users',
         linkTo: '/users',
@@ -93,7 +94,7 @@ const Widget = ({ type }) => {
     const fetchUnverifiedUserCountData = async () => {
       try {
         const res = await axios.get(
-          'http://192.168.137.217:8000/user/unverified-count'
+          `${baseUrl}/user/unverified-count`
         );
         // console.log(res.data);
         setUnverifiedUserCount((prev) => res.data);
@@ -104,7 +105,7 @@ const Widget = ({ type }) => {
 
     const fetchUsersCountData = async () => {
       try {
-        const res = await axios.get('http://192.168.137.217:8000/user/all');
+        const res = await axios.get(`${baseUrl}/user/all`);
         // console.log(res.data.length);
         setUserCount((prev) => res.data.length);
       } catch (err) {
