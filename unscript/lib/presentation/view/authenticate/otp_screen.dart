@@ -54,6 +54,7 @@ class OTPScreen extends GetView<OtpController> {
             ),
             verticalSpacing(vs2),
             Form(
+              key: controller.formKey,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -133,44 +134,6 @@ class OTPScreen extends GetView<OtpController> {
                       ],
                     ),
                   ),
-                  // SizedBox(
-                  //   height: 50,
-                  //   width: 50,
-                  //   child: TextField(
-                  //     controller: otpController.otpController5,
-                  //     onChanged: (value) {
-                  //       if (value.length == 1) {
-                  //         FocusScope.of(context).nextFocus();
-                  //       }
-                  //     },
-                  //     style: Theme.of(context).textTheme.headline6,
-                  //     keyboardType: TextInputType.number,
-                  //     textAlign: TextAlign.center,
-                  //     inputFormatters: [
-                  //       LengthLimitingTextInputFormatter(1),
-                  //       FilteringTextInputFormatter.digitsOnly,
-                  //     ],
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 50,
-                  //   width: 50,
-                  //   child: TextField(
-                  //     controller: otpController.otpController6,
-                  //     onChanged: (value) {
-                  //       if (value.length == 1) {
-                  //         FocusScope.of(context).nextFocus();
-                  //       }
-                  //     },
-                  //     style: Theme.of(context).textTheme.headline6,
-                  //     keyboardType: TextInputType.number,
-                  //     textAlign: TextAlign.center,
-                  //     inputFormatters: [
-                  //       LengthLimitingTextInputFormatter(1),
-                  //       FilteringTextInputFormatter.digitsOnly,
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -190,7 +153,8 @@ class OTPScreen extends GetView<OtpController> {
             CustomLongButton(
               buttonText: "Verify",
               onPressedFunction: () {
-                Get.offAllNamed("/bottomNavigation");
+                // Get.offAllNamed("/bottomNavigation");
+                controller.handleVerification();
               },
             ),
           ],

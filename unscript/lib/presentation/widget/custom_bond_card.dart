@@ -3,15 +3,24 @@ import 'package:get/get.dart';
 import 'package:unscript/constant/color.dart';
 import 'package:unscript/constant/size.dart';
 import 'package:unscript/constant/textstyle.dart';
+import 'package:unscript/model/bond_model.dart';
 
 class CustomBondCard extends StatelessWidget {
-  const CustomBondCard({super.key});
+  final BondModel bond;
+  const CustomBondCard({super.key, required this.bond});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed("/bondPurchase");
+        Get.toNamed(
+          "/bondPurchase",
+          arguments: [
+            {
+              "bond": bond,
+            },
+          ],
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -26,7 +35,7 @@ class CustomBondCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Income NBFC Bond",
+                bond.symbol,
                 style: header2.copyWith(
                     fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
@@ -36,7 +45,7 @@ class CustomBondCard extends StatelessWidget {
                 children: [
                   _bondCardItem(
                     "Bond Type",
-                    "Regular",
+                    bond.bondType.name,
                   ),
                   horizontalSpacing(hs1 * 3),
                   _bondCardItem("Qty", "1200"),
@@ -47,16 +56,19 @@ class CustomBondCard extends StatelessWidget {
                 children: [
                   _bondCardItem(
                     "High",
-                    "1238",
+                    bond.high,
                   ),
                   horizontalSpacing(hs1 * 6.6),
-                  _bondCardItem("Low", "1238"),
+                  _bondCardItem(
+                    "Low",
+                    bond.low,
+                  ),
                 ],
               ),
               verticalSpacing(8.0),
               _bondCardItem(
                 "Maturity Date",
-                "SEP 12, 2023",
+                bond.maturityDate,
               ),
             ],
           ),
