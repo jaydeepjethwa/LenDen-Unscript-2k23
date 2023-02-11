@@ -37,7 +37,7 @@ export const fetchUsersCountData = async () => {
 export const fetchSingleUserData = async (userId) => {
   try {
     const { data } = await axios.get(`${baseUrl}/user/${userId}`);
-    console.log(data)
+    // console.log(data)
     return data;
   } catch (err) {
     console.error(err);

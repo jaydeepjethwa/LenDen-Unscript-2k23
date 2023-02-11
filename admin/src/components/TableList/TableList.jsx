@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -11,8 +11,25 @@ import {
 
 import './TableList.scss';
 import { transactions } from '../../constants';
+import { baseUrl } from '../../apis/config';
 
-const TableList = () => {
+const TableList = ({ userId }) => {
+  const [userTransactionData, setUserTransactionData] = useState([]);
+
+  // /transactions/user/id
+  // useEffect(() => {
+  //   const fetchUserTransactionData = async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         `${baseUrl}/transactions/user/${userId}`
+  //       );
+  //       console.log(data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  // }, userTransactionData);
+
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

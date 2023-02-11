@@ -25,19 +25,19 @@ const VendorDetails = () => {
   // }, [])
 
   const getVendorDetailsById = async (id) => {
-    var result = await axios.post(
-      'http://localhost:8000/api/vendormanagement/getvendorDetailsbyId',
-      { id }
-    );
-    var result = await result.data;
-    setName(result[0].name);
-    setPhone(result[0].phone);
-    setEmail(result[0].email);
-    setLane(result[0].lane);
-    setCity(result[0].city);
-    setState(result[0].state);
-    setCountry(result[0].country);
-    setPincode(result[0].pincode);
+    // var result = await axios.post(
+    //   'http://localhost:8000/api/vendormanagement/getvendorDetailsbyId',
+    //   { id }
+    // );
+    // var result = await result.data;
+    // setName(result[0].name);
+    // setPhone(result[0].phone);
+    // setEmail(result[0].email);
+    // setLane(result[0].lane);
+    // setCity(result[0].city);
+    // setState(result[0].state);
+    // setCountry(result[0].country);
+    // setPincode(result[0].pincode);
   };
 
   //get storedetails
@@ -75,19 +75,19 @@ const VendorDetails = () => {
   const [bankName, setBankName] = useState('');
 
   useEffect(() => {
-    getBankDetailsById(params.id);
+    // getBankDetailsById(params.id);
   }, []);
 
   const getBankDetailsById = async (id) => {
-    var result = await axios.post(
-      'http://localhost:8000/api/vendormanagement/getBankDetailsById',
-      { id }
-    );
-    var result = await result.data;
-    setAccountHolderName(result[0].accountHolderName);
-    setAccountNumber(result[0].accountNumber);
-    setIfscCode(result[0].ifscCode);
-    setBankName(result[0].bankName);
+    // var result = await axios.post(
+    //   'http://localhost:8000/api/vendormanagement/getBankDetailsById',
+    //   { id }
+    // );
+    // var result = await result.data;
+    // setAccountHolderName(result[0].accountHolderName);
+    // setAccountNumber(result[0].accountNumber);
+    // setIfscCode(result[0].ifscCode);
+    // setBankName(result[0].bankName);
   };
 
   let GSTIN = '1028HDSAJ';
