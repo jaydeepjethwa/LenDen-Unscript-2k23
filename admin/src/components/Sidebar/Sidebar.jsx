@@ -14,13 +14,13 @@ import './Sidebar.scss';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
-      <div className="top">
+    <div className="sidebarComp">
+      <div className="topComp">
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="logo">Admin Dashboard</span>
+          <span className="logoComp">Admin Dashboard</span>
         </Link>
       </div>
-      <hr />
+      {/* <hr /> */}
       <div className="center">
         <ul>
           <p className="title">MAIN</p>

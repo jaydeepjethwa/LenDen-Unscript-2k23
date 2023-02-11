@@ -1,4 +1,4 @@
-.navbar {
+.navbarComponent {
   height: 50px;
   border-bottom: 0.5px solid #e7e4e4;
   display: flex;
@@ -30,11 +30,11 @@
       }
     }
 
-    .items {
+    .navItems {
       display: flex;
       align-items: center;
 
-      .item {
+      .navItem {
         display: flex;
         align-items: center;
         margin: 20px;

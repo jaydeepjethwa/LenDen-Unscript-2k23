@@ -32,7 +32,7 @@ const Widget = ({ type }) => {
         stat: userCount,
         icon: (
           <PersonOutlined
-            className="icon"
+            className="widgetIcon"
             style={{ color: 'green', backgroundColor: 'rgba(0, 128, 0, 0.2' }}
           />
         ),
@@ -47,7 +47,7 @@ const Widget = ({ type }) => {
         stat: unverifiedUserCount,
         icon: (
           <PersonOutlined
-            className="icon"
+            className="widgetIcon"
             style={{ color: 'crimson', backgroundColor: 'rgba(255, 0, 0, 0.2' }}
           />
         ),
@@ -61,7 +61,7 @@ const Widget = ({ type }) => {
         count: 0,
         icon: (
           <MonetizationOnOutlined
-            className="icon"
+            className="widgetIcon"
             style={{ color: 'green', backgroundColor: 'rgba(0, 128, 0, 0.2' }}
           />
         ),
@@ -75,7 +75,7 @@ const Widget = ({ type }) => {
         count: 0,
         icon: (
           <AccountBalanceWalletOutlined
-            className="icon"
+            className="widgetIcon"
             style={{
               color: 'purple',
               backgroundColor: 'rgba(128, 0, 128, 0.2',
