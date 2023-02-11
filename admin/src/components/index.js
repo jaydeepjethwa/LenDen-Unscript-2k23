@@ -5,4 +5,5 @@ export { default as Chart } from './Chart/Chart';
 export { default as Featured } from './Featured/Featured';
 export { default as TableList } from './TableList/TableList';
 export { default as Datatable } from './Datatable/Datatable';
+export { default as Databanner } from './Datatable/Databanner/Databanner';
 

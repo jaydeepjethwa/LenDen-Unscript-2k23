@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Login, Home, List, New, Single, Banner } from './pages';
+import { Login, Home, List, New, Single, Banner, BannerEdit, BannerView, NewBanner } from './pages';
 import { userInputs, productInputs } from './constants';
 
 function App() {
@@ -27,9 +27,12 @@ function App() {
 
           <Route path="banners">
             <Route index element={<Banner />} />
-            <Route path="view/:id" element={<Single />} />
-            <Route path="edit/:id" element={<Single />} />
-            <Route path="new" element={<New inputs={productInputs} title="Add New Product" />} />
+            <Route path="view/:id" element={<BannerView />} />
+            <Route path="edit/:id" element={<BannerEdit />} />
+            <Route
+                path="new"
+                element={<NewBanner title="Add New Banner" />}
+              />
           </Route>
         </Routes>
       </BrowserRouter>

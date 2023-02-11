@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+
 import './Banner.scss';
-import { Sidebar, Navbar } from '../../components';
+import { Sidebar, Navbar, Databanner } from '../../components';
+import 'react-dropzone-uploader/dist/styles.css'
 
 const Banner = () => {
   return (
@@ -10,7 +12,7 @@ const Banner = () => {
       <div className="bannerContainer">
         <Navbar />
         <div className="banner">
-          {/* <Databanner /> */}
+          <Databanner />
         </div>
       </div>
     </div>
