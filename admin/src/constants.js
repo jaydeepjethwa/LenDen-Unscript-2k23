@@ -91,3 +91,24 @@ export const bondsData = [
     tenure: '108',
   },
 ]
+
+
+// Orders DAta
+export const ordersData = [
+  {
+    id: 2342355,
+    date: '11/02/2023',
+    bond: 'Muthoot Finance Limited VII',
+    soldTo: 'Prajwal Jaiswal',
+    soldBy: 'Muthoot Finance Limited',
+    amount: '10000',
+  },
+  {
+    id: 7653456,
+    date: '01/02/2023',
+    bond: 'Muthoot Finance Limited VI',
+    soldTo: 'Prajwal Jaiswal',
+    soldBy: 'Muthoot Finance Limited',
+    amount: '30000',
+  },
+]

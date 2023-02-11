@@ -13,7 +13,7 @@ import {
   NewBanner,
 } from './pages';
 // import { userInputs, productInputs } from './constants';
-import { bondsData } from './constants';
+import { bondsData, ordersData } from './constants';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -55,6 +55,15 @@ function App() {
 
           <Route path="bonds">
             <Route index element={<List data={bondsData} />} />
+            <Route path=":productId" element={<Single />} />
+            <Route
+              path="new"
+              element={<New inputs={"productInputs"} title="Add New Product" />}
+            />
+          </Route>
+
+          <Route path="orders">
+            <Route index element={<List data={ordersData} />} />
             <Route path=":productId" element={<Single />} />
             <Route
               path="new"

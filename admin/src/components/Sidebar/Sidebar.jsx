@@ -46,18 +46,19 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <li>
-            <CreditCardOutlined className="icon" />
-            <span>Orders</span>
-          </li>
+          <Link to="/orders" style={{ textDecoration: 'none' }}>
+            <li>
+              <CreditCardOutlined className="icon" />
+              <span>Orders</span>
+            </li>
+          </Link>
 
           <p className="title">USEFUL</p>
           <Link to="/banners" style={{ textDecoration: 'none' }}>
-
-          <li>
-            <ViewCarouselOutlined className="icon" />
-            <span>Banners</span>
-          </li>
+            <li>
+              <ViewCarouselOutlined className="icon" />
+              <span>Banners</span>
+            </li>
           </Link>
 
           <li>

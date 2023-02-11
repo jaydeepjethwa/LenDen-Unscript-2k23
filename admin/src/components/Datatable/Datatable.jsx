@@ -25,13 +25,22 @@ const usersColumns = [
 ];
 
 const bondsColumns = [
-  // { field: 'id', headerName: 'ID', width: 120 },
+  { field: 'id', headerName: 'ID', width: 120 },
   { field: 'bond', headerName: 'Bond Name', width: 220 },
   { field: 'issuerName', headerName: 'Issuer Name', width: 250 },
   { field: 'rating', headerName: 'Rating', width: 100 },
   { field: 'minInvest', headerName: 'Min. Investment (Rs.)', width: 150 },
   { field: 'yield', headerName: 'Yield (%)', width: 100 },
   { field: 'tenure', headerName: 'Tenure (months)', width: 150 },
+];
+
+const ordersColumns = [
+  { field: 'id', headerName: 'ID', width: 120 },
+  { field: 'date', headerName: 'Date', width: 100 },
+  { field: 'bond', headerName: 'Bond Name', width: 220 },
+  { field: 'soldTo', headerName: 'Sold To', width: 200 },
+  { field: 'soldBy', headerName: 'Sold By', width: 200 },
+  { field: 'amount', headerName: 'Amount (Rs.)', width: 150 },
 ];
 
 const DataTable = ({ data }) => {
@@ -181,6 +190,17 @@ const DataTable = ({ data }) => {
           className="datagrid"
           rows={data}
           columns={bondsColumns.concat(actionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+        />
+      )}
+
+      {currentPath === '/orders' && (
+        <DataGrid
+          className="datagrid"
+          rows={data}
+          columns={ordersColumns.concat(actionColumn)}
           pageSize={9}
           rowsPerPageOptions={[9]}
           checkboxSelection
