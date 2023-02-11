@@ -80,7 +80,7 @@ const UserProfile = () => {
           </div>
 
           <div className="right">
-          {/* <VendorDetails aspect={3/1}/> */}
+          <VendorDetails aspect={3/1}/>
           </div>
         </div>
         <div className="bottom">
