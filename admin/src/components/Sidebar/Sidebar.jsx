@@ -61,10 +61,12 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <li>
-            <SettingsOutlined className="icon" />
-            <span>Settings</span>
-          </li>
+          <Link to="/settings" style={{ textDecoration: 'none' }}>
+            <li>
+              <SettingsOutlined className="icon" />
+              <span>Settings</span>
+            </li>
+          </Link>
 
           <p className="title">ADMIN</p>
           {/* <li>

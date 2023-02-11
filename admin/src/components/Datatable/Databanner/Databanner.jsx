@@ -25,7 +25,7 @@ const Databanner = () => {
   const getAllBanner = async () => {
     var result = await fetch("http://localhost:8000/api/banner/getAllBanner");
     var temp = await result.json();
-    console.log(result);
+    // console.log(result);
     setBanner(temp);
   };
 

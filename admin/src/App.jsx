@@ -11,6 +11,7 @@ import {
   BannerEdit,
   BannerView,
   NewBanner,
+  Settings,
 } from './pages';
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData } from './constants';
@@ -77,6 +78,8 @@ function App() {
             <Route path="edit/:id" element={<BannerEdit />} />
             <Route path="new" element={<NewBanner title="Add New Banner" />} />
           </Route>
+
+          <Route path='/settings' element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </div>

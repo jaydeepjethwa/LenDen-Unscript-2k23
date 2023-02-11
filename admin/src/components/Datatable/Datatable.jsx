@@ -8,7 +8,6 @@ import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { green } from '@mui/material/colors';
 import './Datatable.scss';
-// import { userRows } from '../../constants';
 
 const initialSort = [
   {
@@ -46,7 +45,7 @@ const ordersColumns = [
 const DataTable = ({ data }) => {
   const currentPath = useLocation().pathname;
 
-  console.log(currentPath);
+  // console.log(currentPath);
 
   const RedSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
