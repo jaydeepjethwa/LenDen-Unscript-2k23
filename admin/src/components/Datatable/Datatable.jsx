@@ -165,7 +165,7 @@ const DataTable = ({ data }) => {
 
             {currentPath === '/bonds' && (
               <Link
-                to={`/bonds/view/${params.row.id}`}
+                to={`/bonds/view/${params.row.bond_id}`}
                 style={{ textDecoration: 'none' }}
               >
                 <div className="viewButton">View</div>
@@ -249,10 +249,14 @@ const DataTable = ({ data }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
-          Add New
-        </Link>
+        {currentPath === '/bonds' && (
+          <>
+            Add New Bond
+            <Link to="/bonds/new" className="link">
+              Add New
+            </Link>
+          </>
+        )}
       </div>
       {currentPath === '/users' && data && (
         <DataGrid

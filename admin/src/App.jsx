@@ -17,6 +17,7 @@ import {
   Settings,
   UserProfile,
   NewBond,
+  BondDetails,
 } from './pages';
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData, usersData1 } from './constants';
@@ -31,11 +32,12 @@ import { baseUrl } from './apis/config';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
-  const [userCount, setUserCount] = useState();
 
   const [bondsData, setBondsData] = useState([]);
 
+  const [userCount, setUserCount] = useState();
   const [unverifiedUserCount, setUnverifiedUserCount] = useState();
+  const [totalEarningsData, setTotalEarningsData] = useState();
 
   // useEffect(() => {
   //   // Fetch Users data
@@ -73,6 +75,13 @@ function App() {
     fetchUnverifiedUserCount();
   }, [unverifiedUserCount]);
 
+  useEffect(() => {
+    const fetchTotalEarningsData = async () => {
+      const data = await axios.get(`${baseUrl}/`);
+      console.log(data);
+    };
+  });
+
   //Fetch bonds data
   useEffect(() => {
     const fetchUsers = async () => {
@@ -94,6 +103,8 @@ function App() {
               element={
                 <Home
                   userCount={userCount}
+                  usersData={usersData}
+                  totalEarningsData={1234}
                   unverifiedUserCount={unverifiedUserCount}
                 />
               }
@@ -112,7 +123,7 @@ function App() {
 
           <Route path="bonds">
             <Route index element={<List data={bondsData} />} />
-            <Route path="view/:id" element={<Single />} />
+            <Route path="view/:id" element={<BondDetails />} />
             <Route path="new" element={<NewBond />} />
           </Route>
 

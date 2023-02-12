@@ -23,6 +23,7 @@ const UserProfile = () => {
   // let [imgSrc, setImgSrc] = useState('');
 
   const userId = useLocation().pathname.split('/')[3];
+  // console.log(userId);
 
   useEffect(() => {
     const fetchSingleUser = async () => {
@@ -38,14 +39,15 @@ const UserProfile = () => {
         const { data } = await axios.get(
           `${baseUrl}/transactions/user/${userId}`
         );
-        console.log(data);
+        // console.log(data);
+        setUserTransactionData(data);
       } catch (err) {
         console.error(err);
       }
     };
 
     fetchUserTransactionData();
-  }, userTransactionData);
+  }, []);
 
   // Convert base64 to img
   // const convertImg = () => {
