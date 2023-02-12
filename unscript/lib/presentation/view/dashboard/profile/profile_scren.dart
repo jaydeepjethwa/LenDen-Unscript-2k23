@@ -54,11 +54,11 @@ class ProfileScreen extends StatelessWidget {
                 "Wishlist",
                 Icons.bookmark,
                 () {
-                  Get.toNamed("/kyc");
+                  Get.toNamed("/waitList");
                 },
               ),
               _profileItem(
-                "Histroy",
+                "History",
                 Icons.history,
                 () {
                   Get.toNamed("/transaction");

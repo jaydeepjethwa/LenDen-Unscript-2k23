@@ -8,6 +8,7 @@ import 'package:unscript/presentation/view/dashboard/profile/profile_info_screen
 import 'package:unscript/presentation/view/splash/splash_screen.dart';
 import 'package:unscript/presentation/view/transaction/transaction_screen.dart';
 import 'package:unscript/presentation/view/wallet/wallet_screen.dart';
+import 'package:unscript/presentation/view/wishlist/wish_list.dart';
 
 List<GetPage> routesList = [
   GetPage(
@@ -64,4 +65,10 @@ List<GetPage> routesList = [
     transitionDuration: const Duration(milliseconds: 500),
     transition: Transition.rightToLeftWithFade,
   ),
+        GetPage(
+    name: "/waitList",
+    page: () => const WishList(),
+    transitionDuration: const Duration(milliseconds: 500),
+    transition: Transition.rightToLeftWithFade,
+  )
 ];

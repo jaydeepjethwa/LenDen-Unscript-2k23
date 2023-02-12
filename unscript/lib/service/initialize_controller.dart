@@ -8,6 +8,7 @@ import 'package:unscript/controller/bottom_navigation/bottom_navigation_controll
 import 'package:unscript/controller/home/home_controller.dart';
 import 'package:unscript/controller/portfolio/portfolio_controller.dart';
 import 'package:unscript/controller/transaction/transaction_controller.dart';
+import 'package:unscript/controller/waitlist/waitlist_controller.dart';
 import 'package:unscript/controller/wallet/wallet_controller.dart';
 
 class InitializeController {
@@ -21,7 +22,7 @@ class InitializeController {
     Get.lazyPut(() => BondPurchaseController(), fenix: true);
     Get.lazyPut(() => WalletController(), fenix: true);
     Get.lazyPut(() => TransactionController(), fenix: true);
-        Get.lazyPut(() => PortfolioController(), fenix: true);
-
+    Get.lazyPut(() => PortfolioController(), fenix: true);
+    Get.lazyPut(() => WaitlistController(), fenix: true);
   }
 }
