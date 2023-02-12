@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: "LENDEN - BOND TRADE SIMPLIFIED",
       debugShowCheckedModeBanner: false,
       theme: theme,
-      initialRoute: "/login",
+      initialRoute: "/splash",
       getPages: routesList,
     );
   }

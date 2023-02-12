@@ -3,15 +3,24 @@ import 'package:get/get.dart';
 import 'package:unscript/constant/color.dart';
 import 'package:unscript/constant/size.dart';
 import 'package:unscript/constant/textstyle.dart';
+import 'package:unscript/model/bond_model.dart';
 
 class BondCard extends StatelessWidget {
-  const BondCard({super.key});
+  final BondModel bond;
+  const BondCard({super.key, required this.bond});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed("bondPurchase");
+        Get.toNamed(
+          "/bondPurchase",
+          arguments: [
+            {
+              "bond": bond,
+            },
+          ],
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -28,7 +37,7 @@ class BondCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "NHAI",
+                    bond.symbol,
                     style: header2.copyWith(fontWeight: FontWeight.bold),
                   ),
                   horizontalSpacing(5.0),
@@ -42,7 +51,7 @@ class BondCard extends StatelessWidget {
                   ),
                   horizontalSpacing(5.0),
                   Text(
-                    "N6",
+                    bond.series,
                     style: paraStyle.copyWith(fontSize: 14.0),
                   ),
                 ],
@@ -51,9 +60,9 @@ class BondCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _cardItem("MATURITY DATE", "SEP 26, 2023"),
-                  _cardItem("COUPON", "6.75%"),
-                  _cardItem("%CHNG", "-0.01"),
+                  _cardItem("MATURITY DATE", bond.maturityDate),
+                  _cardItem("COUPON", bond.couponRate.toString()),
+                  _cardItem("%CHNG", bond.percentageChange.toString()),
                 ],
               ),
             ],

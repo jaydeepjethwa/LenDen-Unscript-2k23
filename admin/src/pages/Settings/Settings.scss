@@ -1,0 +1,71 @@
+.settings {
+  display: flex;
+  width: 100%;
+
+  .settingsContainer {
+    flex: 6;
+
+    .settingsCard {
+      height: 600px;
+      padding: 20px;
+
+      .settingsTitle {
+        width: 100%;
+        font-size: 24px;
+        color: gray;
+        margin-bottom: 30px;
+      }
+
+      .settingsSubtitle {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 20px;
+        // color: gray;
+        font-weight: bold;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        // gap: 30px;
+        // justify-content: space-around;
+
+        .formInput {
+          width: 40%;
+
+          label {
+            display: flex;
+            align-items: center;
+            // gap: 10px;
+
+            span {
+              color: gray;
+            }
+          }
+
+          input {
+            width: 100%;
+            height: 40px;
+            padding: 5px;
+            border: none;
+            margin-top: 10px;
+            border-bottom: 1px solid gray;
+            outline: none;
+          }
+        }
+
+        button {
+          width: 150px;
+          padding: 10px;
+          border: none;
+          background-color: #7451f8;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

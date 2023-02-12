@@ -7,6 +7,7 @@ import {
   ViewCarouselOutlined,
   SettingsOutlined,
   LogoutOutlined,
+  NoteAddOutlined,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
@@ -14,13 +15,13 @@ import './Sidebar.scss';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
-      <div className="top">
+    <div className="sidebarComp">
+      <div className="topComp">
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="logo">My Dashboard</span>
+          <span className="logoComp">Admin Dashboard</span>
         </Link>
       </div>
-      <hr />
+      {/* <hr /> */}
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
@@ -39,31 +40,41 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <Link to="/products" style={{ textDecoration: 'none' }}>
+          <Link to="/bonds" style={{ textDecoration: 'none' }}>
             <li>
               <FeedOutlined className="icon" />
               <span>Bonds</span>
             </li>
           </Link>
 
-          <li>
-            <CreditCardOutlined className="icon" />
-            <span>Orders</span>
-          </li>
+          {/* <Link to="/orders" style={{ textDecoration: 'none' }}>
+            <li>
+              <CreditCardOutlined className="icon" />
+              <span>Orders</span>
+            </li>
+          </Link> */}
 
           <p className="title">USEFUL</p>
           <Link to="/banners" style={{ textDecoration: 'none' }}>
-
-          <li>
-            <ViewCarouselOutlined className="icon" />
-            <span>Banners</span>
-          </li>
+            <li>
+              <ViewCarouselOutlined className="icon" />
+              <span>Featured Bonds</span>
+            </li>
           </Link>
 
-          <li>
-            <SettingsOutlined className="icon" />
-            <span>Settings</span>
-          </li>
+          <Link to="/bonds/new" style={{ textDecoration: 'none' }}>
+            <li>
+              <NoteAddOutlined className="icon" />
+              <span>Create Bonds</span>
+            </li>
+          </Link>
+
+          <Link to="/settings" style={{ textDecoration: 'none' }}>
+            <li>
+              <SettingsOutlined className="icon" />
+              <span>Settings</span>
+            </li>
+          </Link>
 
           <p className="title">ADMIN</p>
           {/* <li>

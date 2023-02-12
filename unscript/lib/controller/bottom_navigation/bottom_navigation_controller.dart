@@ -4,6 +4,7 @@ import 'package:unscript/controller/bond/bond_controller.dart';
 import 'package:unscript/presentation/view/dashboard/bond/bond_screen.dart';
 import 'package:unscript/presentation/view/dashboard/home/home_screen.dart';
 import 'package:unscript/presentation/view/dashboard/profile/profile_scren.dart';
+import 'package:unscript/presentation/view/dashboard/portfolio/portfolio_screen.dart';
 
 class BottomNavigationController extends GetxController {
   var currentIndex = 0.obs;
@@ -13,6 +14,7 @@ class BottomNavigationController extends GetxController {
     BondScreen(
       controller: Get.put(BondController()),
     ),
+    const PortfolioScreen(),
     const ProfileScreen(),
   ];
 

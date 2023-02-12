@@ -1,25 +1,21 @@
-.sidebar {
+.sidebarComp {
   flex: 1;
   border-right: 0.5px solid #efeeee;
   min-height: 100vh;
   background-color: white;
 
-  .top {
+  .topComp {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 0.5px solid #efeeee;
 
-    .logo {
+    .logoComp {
       font-size: 20px;
       font-weight: bold;
       color: #6439ff;
     }
-  }
-
-  hr {
-    height: 0;
-    border: 0.5px solid #efeeee;
   }
 
   .center {

@@ -11,31 +11,45 @@ class BottomNavigationScreen extends GetView<BottomNavigationController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: white,
-          title: Row(
-            children: [
-              const Image(
-                image: AssetImage("assets/logo_1.png"),
-                width: 40.0,
-              ),
-              horizontalSpacing(5.0),
-              const Image(
-                image: AssetImage("assets/name.png"),
-                width: 85.0,
-              ),
-            ],
+        backgroundColor: white,
+        title: Row(
+          children: [
+            const Image(
+              image: AssetImage("assets/logo_1.png"),
+              width: 40.0,
+            ),
+            horizontalSpacing(5.0),
+            const Image(
+              image: AssetImage("assets/name.png"),
+              width: 85.0,
+            ),
+          ],
+        ),
+        elevation: 0.7,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              Icons.notifications_none_rounded,
+              size: 28.0,
+              color: blue,
+            ),
           ),
-          elevation: 0.7,
-          actions: [
-            Padding(
+          GestureDetector(
+            onTap: () {
+              Get.toNamed("/wallet");
+            },
+            child: Padding(
               padding: const EdgeInsets.only(right: 10.0),
               child: Icon(
-                Icons.notifications_none_rounded,
+                Icons.account_balance_wallet_rounded,
                 size: 28.0,
                 color: blue,
               ),
             ),
-          ]),
+          ),
+        ],
+      ),
       body: Obx(
         () => controller.screenList[controller.currentIndex.value],
       ),
@@ -83,6 +97,13 @@ class BottomNavigationScreen extends GetView<BottomNavigationController> {
                   label: "Bond",
                   icon: Icon(
                     Icons.search,
+                    size: 32.0,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: "Portfolio",
+                  icon: Icon(
+                    Icons.shopping_bag_rounded,
                     size: 32.0,
                   ),
                 ),
