@@ -23,12 +23,28 @@
         padding: 20px;
 
         .details {
+          .head {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dbdbdb;
+
+            .tag {
+              background-color: rgba(0, 128, 0, 0.5);
+              font-size: 12px;
+              padding: 6px;
+              font-weight: bold;
+              color: white;
+              border-radius: 8px;
+            }
+          }
+
           .title {
             padding: 0;
             color: black;
             font-size: 30px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #dbdbdb;
           }
 
           .bondInfo {
@@ -107,7 +123,7 @@
         .bondRating {
           margin: 30px;
           margin-bottom: 0;
-          font-size: 50px;
+          font-size: 35px;
           font-weight: bold;
         }
 

@@ -13,8 +13,8 @@ import './TableList.scss';
 import { transactions } from '../../constants';
 import { baseUrl } from '../../apis/config';
 
-const TableList = ({ userId }) => {
-  const [userTransactionData, setUserTransactionData] = useState([]);
+const TableList = ({ userId, userTransactionData }) => {
+  // const [userTransactionData, setUserTransactionData] = useState([]);
 
   // /transactions/user/id
   // useEffect(() => {
@@ -42,12 +42,15 @@ const TableList = ({ userId }) => {
             <TableCell className="tableCell">
               Transaction Price (&#8377;)
             </TableCell>
+            <TableCell className="tableCell">
+              Total Transaction Price (&#8377;)
+            </TableCell>
             <TableCell className="tableCell">Transaction Type</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {transactions.map((transaction) => (
-            <TableRow key={transaction.id}>
+          {userTransactionData?.map((transaction) => (
+            <TableRow key={transaction.transaction_id}>
               <TableCell className="tableCell">
                 {transaction.transaction_id}
               </TableCell>
@@ -65,6 +68,9 @@ const TableList = ({ userId }) => {
               </TableCell>
               <TableCell className="tableCell">
                 {transaction.transaction_price}
+              </TableCell>
+              <TableCell className="tableCell">
+                {transaction.transaction_price * transaction.quantity}
               </TableCell>
               {/* <TableCell className="tableCell">{transaction.method}</TableCell> */}
               <TableCell className="tableCell">

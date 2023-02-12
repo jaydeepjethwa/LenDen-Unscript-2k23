@@ -252,7 +252,7 @@ const DataTable = ({ data }) => {
         {currentPath === '/bonds' && (
           <>
             Add New Bond
-            <Link to="/users/new" className="link">
+            <Link to="/bonds/new" className="link">
               Add New
             </Link>
           </>

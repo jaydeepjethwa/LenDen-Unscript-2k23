@@ -14,7 +14,7 @@ const BondDetails = () => {
     const fetchBondDetailsData = async () => {
       try {
         const { data } = await axios.get(`${baseUrl}/bond/${bondId}`);
-        // console.log(data);
+        console.log(data);
         setBondDetails(data);
       } catch (err) {
         console.error(err);
@@ -33,9 +33,18 @@ const BondDetails = () => {
         <div className="top">
           <div className="left">
             <div className="details">
-              <p className="title">
-                {bondDetails.Symbol} - {bondDetails.Series}
-              </p>
+              <div className="head">
+                {/* <div className="title">asdasfd - asdfasdf</div> */}
+                <div className="title">
+                  {bondDetails.Symbol} - {bondDetails.Series}
+                </div>
+                {bondDetails.is_featured === 1 ? (
+                  <span className="tag">Featured</span>
+                ) : (
+                  <></>
+                )}
+                {/* <span className="tag">Yes</span> */}
+              </div>
               <p className="bondInfo">
                 Company:{' '}
                 <span className="bondData"> {bondDetails.companyName}</span>
@@ -50,6 +59,12 @@ const BondDetails = () => {
               </p>
               <p className="bondInfo">
                 Type: <span className="bondData">{bondDetails.BondType}</span>
+              </p>
+              <p className="bondInfo">
+                Is Featured?:{' '}
+                {/* <span className="bondData">
+                  {bondDetails.is_featured === 1 ? 'Yes' : 'No'}
+                </span> */}
               </p>
             </div>
           </div>
