@@ -1,0 +1,18 @@
+.waitlist {
+  display: flex;
+  width: 100%;
+
+  .waitlistContainer {
+    flex: 6;
+
+    .tableContainer {
+      padding: 20px;
+
+      .title {
+        font-size: 24px;
+        color: gray;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

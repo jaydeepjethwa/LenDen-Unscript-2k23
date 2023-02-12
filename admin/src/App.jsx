@@ -18,6 +18,7 @@ import {
   UserProfile,
   NewBond,
   BondDetails,
+  Waitlist,
 } from './pages';
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData, usersData1 } from './constants';
@@ -165,7 +166,7 @@ function App() {
             <Route path="new" element={<NewBond />} />
           </Route>
 
-          {/* <Route path="orders">
+          {/* <Route path="waitlist">
             <Route index element={<List data={ordersData} />} />
             <Route path=":productId" element={<Single />} />
             <Route
@@ -173,6 +174,8 @@ function App() {
               element={<New inputs={'productInputs'} title="Add New Product" />}
             />
           </Route> */}
+
+          <Route path="waitlist" element={<Waitlist />} />
 
           <Route path="banners">
             <Route index element={<Banner />} />
