@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Body
+from fastapi import APIRouter, Depends
 from aiomysql.connection import Connection
 from ..models.users import User
 from ..database import Database
@@ -17,7 +17,7 @@ auth_router = APIRouter()
 @auth_router.post("/login")
 async def login(user: User, conn: Connection = Depends(Database.get_db)):
 
-    user_id, kyc_completed = await user_login(user, conn)
+    user_id = await user_login(user, conn)
 
     otp = str(random.randint(1000, 9999))
 
@@ -40,7 +40,6 @@ async def login(user: User, conn: Connection = Depends(Database.get_db)):
 
     return {
         "user_id": user_id,
-        "kyc_completed": kyc_completed,
         "access_token": signJWT(user.email),
         "otp": otp
     }

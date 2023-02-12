@@ -5,6 +5,7 @@ export { default as New } from './New/New';
 export { default as Single } from './Single/Single';
 export { default as Banner } from './Banner/Banner';
 export { default as Settings } from './Settings/Settings';
+export { default as Waitlist } from './Waitlist/Waitlist';
 export { default as NewBond } from './NewBond/NewBond';
 export { default as BondDetails } from './BondDetails/BondDetails';
 export { default as UserProfile } from './UserProfile/UserProfile';
