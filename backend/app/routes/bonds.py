@@ -51,18 +51,18 @@ async def featured_status(bond_id: int = Body(...), status: int = Body(...), con
 
 @bond_router.post("/update-price")
 async def update_price(bond_id: int = Body(...), price: float = Body(...), conn: Connection = Depends(Database.get_db)):
-    quantity = await set_bond_price_get_qty(bond_id, price)
+    quantity = await set_bond_price_get_qty(bond_id, price, conn)
     eligible_users = await check_waitlist(bond_id, price, quantity, conn)
-
+    print(eligible_users)
     if eligible_users:
         txn = NewTransaction(
-            bond_id, eligible_users["quantity"], price, eligible_users["user_id"], type="BUY")
+            bond_id=bond_id, quantity=eligible_users["quantity"], transaction_price=price, user_id=eligible_users["user_id"], type="BUY")
         await add_transaction(txn, conn)
         await remove_bonds_from_pool(txn.bond_id, txn.quantity, conn)
         await add_to_portfolio(txn.user_id, txn.bond_id, txn.quantity, txn.transaction_price, conn)
         await debit_from_wallet(txn.user_id, (txn.transaction_price * txn.quantity), conn)
 
-        await update_waitlist(eligible_users["wait_id"])
+        await update_waitlist(eligible_users["wait_id"], conn)
 
         user_data = await get_user_details(eligible_users["user_id"], conn)
         email = user_data["email"]

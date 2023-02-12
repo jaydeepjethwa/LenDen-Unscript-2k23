@@ -17,7 +17,7 @@ async def add_to_waitlist(wait: Waitlist, conn: Connection):
 async def check_waitlist(bond_id: int, price: int, available_qty: int, conn: Connection):
     async with conn.cursor() as cursor:
         try:
-            await cursor.execute("""SELECT * FROM waitlist WHERE bond_id = %s, price >= %s ORDER BY joining_time DESC""", (bond_id, price))
+            await cursor.execute("""SELECT * FROM waitlist WHERE bond_id = %s AND price >= %s ORDER BY joining_time DESC""", (bond_id, price))
             eligible_users = await cursor.fetchone()
         except Exception as err:
             print(err)
