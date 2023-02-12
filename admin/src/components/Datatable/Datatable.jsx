@@ -165,7 +165,7 @@ const DataTable = ({ data }) => {
 
             {currentPath === '/bonds' && (
               <Link
-                to={`/bonds/view/${params.row.id}`}
+                to={`/bonds/view/${params.row.bond_id}`}
                 style={{ textDecoration: 'none' }}
               >
                 <div className="viewButton">View</div>

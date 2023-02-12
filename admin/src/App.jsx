@@ -17,6 +17,7 @@ import {
   Settings,
   UserProfile,
   NewBond,
+  BondDetails,
 } from './pages';
 // import { userInputs, productInputs } from './constants';
 import { bondsData, ordersData, usersData1 } from './constants';
@@ -112,7 +113,7 @@ function App() {
 
           <Route path="bonds">
             <Route index element={<List data={bondsData} />} />
-            <Route path="view/:id" element={<Single />} />
+            <Route path="view/:id" element={<BondDetails />} />
             <Route path="new" element={<NewBond />} />
           </Route>
 

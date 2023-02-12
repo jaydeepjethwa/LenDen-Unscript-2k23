@@ -22,7 +22,8 @@ const UserProfile = () => {
 
   // let [imgSrc, setImgSrc] = useState('');
 
-  const userId = useLocation().pathname.split('/')[3];
+  const userId = useLocation().pathname.split('/');
+  console.log(userId);
 
   useEffect(() => {
     const fetchSingleUser = async () => {
