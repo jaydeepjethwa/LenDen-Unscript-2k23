@@ -101,7 +101,7 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                 ),
                 verticalSpacing(vs1),
                 _bondPurchaseItem("Company Name", controller.bond.companyName),
-                 _bondPurchaseItem("Qty", controller.bond.qty.toString()),
+                _bondPurchaseItem("Qty", controller.bond.qty.toString()),
                 verticalSpacing(vs2),
                 Container(
                   width: getWidth(context) - 40,
@@ -147,7 +147,9 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        buyLaterBottomSheet(context);
+                      },
                       child: Text(
                         "Purchase Later",
                         style: buttonStyle,
@@ -253,6 +255,106 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                 buttonText: "Buy Bond",
                 onPressedFunction: () {
                   controller.handleApiCall();
+                },
+              ),
+              verticalSpacing(vs2)
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      elevation: 0,
+    );
+  }
+
+  void buyLaterBottomSheet(BuildContext context) {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Text(
+                controller.bond.companyName,
+                style: header2.copyWith(fontWeight: FontWeight.bold),
+              ),
+              verticalSpacing(vs2 * 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Price : ${controller.bond.ltp}",
+                    style: header2.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "Available Qty : ${controller.bond.qty}",
+                    style: header2.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              verticalSpacing(vs2),
+              Container(
+                margin: const EdgeInsets.only(bottom: 10.0),
+                width: getWidth(context) - horizontalPadding,
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  controller: controller.qtyWB,
+                  decoration: InputDecoration(
+                    hintText: "Qty",
+                    hintStyle: hintText,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 5.0),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: blue,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 10.0),
+                width: getWidth(context) - horizontalPadding,
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  controller: controller.priceWB,
+                  decoration: InputDecoration(
+                    hintText: "Price",
+                    hintStyle: hintText,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 5.0),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: blue,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => Text(
+                      "Balance : ${controller.balance.value}",
+                      style: paraStyle.copyWith(
+                          color: Colors.green, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpacing(vs2),
+              CustomLongButton(
+                buttonText: "Auto Buy",
+                onPressedFunction: () {
+                  controller.autoAPICall();
                 },
               ),
               verticalSpacing(vs2)

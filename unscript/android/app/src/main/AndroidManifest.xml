@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.unscript">
    <application
-        android:label="unscript"
+        android:label="LenDen"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

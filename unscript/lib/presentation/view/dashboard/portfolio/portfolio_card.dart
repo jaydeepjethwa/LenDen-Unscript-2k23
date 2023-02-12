@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:unscript/constant/color.dart';
+import 'package:unscript/constant/constant.dart';
 import 'package:unscript/constant/size.dart';
 import 'package:unscript/constant/textstyle.dart';
+import 'package:unscript/model/portfolio_model.dart';
 
 class PortfolioCard extends StatelessWidget {
-  const PortfolioCard({super.key});
+  final BondsDatum portfolio;
+  final VoidCallback ontapFunction;
+  const PortfolioCard({super.key, required this.portfolio, required this.ontapFunction});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: getWidth(context) - 40,
+      margin: const EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         color: lightGrey,
         border: Border.all(color: blue, width: 2.0),
@@ -23,12 +28,14 @@ class PortfolioCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Bond name goes HERE",
-                  style: header1,
+                Expanded(
+                  child: Text(
+                    portfolio.companyName,
+                    style: header1,
+                  ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: ontapFunction,
                   child: const Text("Sell"),
                 ),
                 verticalSpacing(5.0),
@@ -38,11 +45,12 @@ class PortfolioCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _summaryItem("Date Bought", "14-23-3890"),
-                _summaryItem("Qty", "243"),
-                _summaryItem("Price", "14345"),
-                _summaryItem("Current Price", "1434"),
-                _summaryItem("Maturity Date", "14-23-3456"),
+                _summaryItem(
+                    "Date Bought", formatDate(portfolio.transactionTime)),
+                _summaryItem("Qty", portfolio.quantity.toString()),
+                _summaryItem("Price", portfolio.purchasePrice.toString()),
+                _summaryItem("Current Price", portfolio.ltp),
+                _summaryItem("Maturity Date", portfolio.maturityDate),
               ],
             ),
           ],
