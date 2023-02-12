@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import './VendorDetails.scss';
 import Signature from '../../assets/images/aadharDummy.jpg';
-import Chequeue from '../../assets/images/dummyCancelChqcque.png';
+import Cheque from '../../assets/images/dummyCancelChqcque.png';
 
 const VendorDetails = () => {
   const params = useParams();
@@ -96,17 +96,17 @@ const VendorDetails = () => {
     <div className="row">
       <div>
         <h2>
-          <strong>Vendor Details</strong>
+          <strong>KYC Documents</strong>
         </h2>
       </div>
 
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            <strong>Vendor Details</strong>{' '}
+            <strong>User Aadhar Card</strong>{' '}
           </Accordion.Header>
           <Accordion.Body>
-            <div className="row">
+            {/* <div className="row">
               <div className="col">
                 <div className="VendorDetails">
                   <span>
@@ -150,225 +150,42 @@ const VendorDetails = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
+
+            <p>
+              <a href={Signature} target="_blank">
+                Click here
+              </a>{' '}
+              to view Aadhar Card
+            </p>
           </Accordion.Body>
         </Accordion.Item>
 
         <Accordion.Item eventKey="1">
           <Accordion.Header>
-            <strong>Store Details </strong>
+            <strong>Signature Proof</strong>
           </Accordion.Header>
           <Accordion.Body>
-            <div class="row">
-              <div class="col">
-                <div class="StoreDetails">
-                  <span>
-                    <strong>Store Name:</strong>
-                  </span>{' '}
-                </div>
-                <div class="StoreDetails">
-                  <span>
-                    <strong>GSTIN: </strong>
-                  </span>{' '}
-                </div>
-                <div class="StoreDetails">
-                  <span>
-                    <strong>Address: </strong>
-                  </span>
-                </div>
-                {/* <div class="StoreDetails"><span><strong>Date of Joining: </strong></span></div> */}
-              </div>
-              <div class="col">
-                <div class="StoreDetails">
-                  <span>{businessname}</span>{' '}
-                </div>
-                <div class="StoreDetails">
-                  <span>{gstNumber} </span>
-                </div>
-                <div class="StoreDetails">
-                  <span>
-                    {businesslane} {businesscity} {businessstate}
-                  </span>{' '}
-                  <br />
-                  <span>
-                    {businesscountry} {businesspincode}{' '}
-                  </span>
-                </div>
-                {/* <div class="StoreDetails"><span>14th June | 2022</span></div> */}
-              </div>
-            </div>
+            <p>
+              <a href={Signature} target="_blank">
+                Click here
+              </a>{' '}
+              to view Signature Proof
+            </p>
           </Accordion.Body>
         </Accordion.Item>
 
         <Accordion.Item eventKey="2">
           <Accordion.Header>
-            <strong>Bank Details</strong>
+            <strong>Bank Cheque Book</strong>
           </Accordion.Header>
           <Accordion.Body>
-            <div class="row">
-              <div class="col">
-                <div class="bankDetails">
-                  <span>
-                    <strong>Bank Account Holder Name: </strong>
-                  </span>
-                </div>
-                <div class="bankDetails">
-                  <span>
-                    <strong>Bank Account Number:</strong>
-                  </span>
-                </div>
-                <div class="bankDetails">
-                  <span>
-                    <strong>IFSC Code:</strong>
-                  </span>
-                </div>
-                <div class="bankDetails">
-                  <span>
-                    <strong>Bank Name:</strong>
-                  </span>
-                </div>
-                {/* <div class="bankDetails"><span><strong>Branch Name:</strong></span> </div> */}
-                {/* <div class="bankDetails"><span><strong>City:</strong></span></div> */}
-                {/* <div class="bankDetails"><span><strong>State:</strong></span></div> */}
-              </div>
-              <div class="col">
-                <div class="bankDetails">
-                  <span>{accountHolderName}</span>
-                </div>
-                <div class="bankDetails">
-                  <span>{accountNumber} </span>{' '}
-                </div>
-                <div class="bankDetails">
-                  <span>{ifscCode}</span>{' '}
-                </div>
-                <div class="bankDetails">
-                  <span>{bankName}</span>{' '}
-                </div>
-                {/* <div class="bankDetails"><span>Getty Villa</span> </div> */}
-                {/* <div class="bankDetails"><span>Malibu</span> </div> */}
-                {/* <div class="bankDetails"><span>California</span> </div> */}
-              </div>
-            </div>
-          </Accordion.Body>
-        </Accordion.Item>
-
-        <Accordion.Item eventKey="3">
-          <Accordion.Header>
-            <strong>Documents </strong>
-          </Accordion.Header>
-          <Accordion.Body>
-            <div class="row">
-              <div class="row">
-                <div class="col">
-                  {/* <div class="Documents"><span><strong>Address Proof: </strong></span></div> */}
-                  <div class="Documents">
-                    <span>
-                      <strong>Signature:</strong>
-                    </span>
-                  </div>
-                  <div class="Documents">
-                    <span>
-                      <strong>Cancelled Cheque</strong>
-                    </span>
-                  </div>
-                </div>
-                <div class="col">
-                  {/* <div class="Documents"><button type="button" class="btn btn-sm btn-outline-warning">View</button></div> */}
-                  <div className="Documents">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-warning"
-                      data-toggle="modal"
-                      data-target="#signature"
-                    >
-                      View
-                    </button>
-                  </div>
-                  {/* MODOL for Signature */}
-                  <div
-                    className="modal fade"
-                    id="signature"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        {/* <!-- Modal heading --> */}
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">
-                            Signature
-                          </h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        {/* <!-- Modal body with image --> */}
-                        <div className="modal-body">
-                          <img
-                            className="docsImage img-thumbnail"
-                            src={Signature}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="Documents">
-                    <button
-                      type="button"
-                      class="btn btn-sm  btn-outline-warning"
-                      data-toggle="modal"
-                      data-target="#Cheque"
-                    >
-                      View
-                    </button>
-                  </div>
-
-                  {/* MODOL Checque */}
-                  <div
-                    className="modal fade"
-                    id="Cheque"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        {/* <!-- Modal heading --> */}
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">
-                            Cancelled Cheque
-                          </h5>
-                          <button
-                            type="button"
-                            className=" btn btn-outline-warning"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        {/* <!-- Modal body with image --> */}
-                        <div className="modal-body">
-                          <img
-                            className="docsImage img-thumbnail"
-                            src={Chequeue}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p>
+              <a href={Cheque} target="_blank">
+                Click here
+              </a>{' '}
+              to view Cheque book
+            </p>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
