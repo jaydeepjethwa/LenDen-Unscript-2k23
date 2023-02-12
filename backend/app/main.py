@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .database import Database
-from .routes import auth_router, user_router, bond_router
+from .routes import auth_router, user_router, bond_router, txn_router, portfolio_router, waitlist_router
 
 app = FastAPI()
 
@@ -32,3 +32,6 @@ async def main():
 app.include_router(auth_router, tags=["Authentication"], prefix="/auth")
 app.include_router(user_router, tags=["Users"], prefix="/user")
 app.include_router(bond_router, tags=["Bonds"], prefix="/bond")
+app.include_router(txn_router, tags=["Transactions"], prefix="/transactions")
+app.include_router(portfolio_router, tags=["Portfolio"], prefix="/portfolio")
+app.include_router(waitlist_router, tags=["Waitlist"], prefix="/waitlist")

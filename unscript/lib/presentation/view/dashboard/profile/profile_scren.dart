@@ -40,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                 "Profile",
                 Icons.person,
                 () {
-                  Get.toNamed("/kyc");
+                  Get.toNamed("/profileInfo");
                 },
               ),
               _profileItem(
@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                 "Histroy",
                 Icons.history,
                 () {
-                  Get.toNamed("/kyc");
+                  Get.toNamed("/transaction");
                 },
               ),
               _profileItem(

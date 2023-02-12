@@ -9,7 +9,7 @@ class Database:
         try:
             print("Connecting to database")
             cls.pool = await aiomysql.create_pool(
-                host="localhost", port=3306,
+                host="localhost", port=3306, maxsize=1,
                 user="root", password="", db="lenden",
                 cursorclass=aiomysql.cursors.DictCursor
             )
