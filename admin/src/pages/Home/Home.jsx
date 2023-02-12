@@ -14,8 +14,8 @@ import {
 const Home = ({
   userCount,
   unverifiedUserCount,
-  usersData,
   totalEarningsData,
+  transactionsCount,
 }) => {
   // const [userCount, setUserCount] = useState(0);
   // const [unverifiedUserCount, setUnverifiedUserCount] = useState(0);
@@ -56,7 +56,7 @@ const Home = ({
           <Widget type="users" userCount={userCount} />
           <Widget type="kyc" unverifiedUserCount={unverifiedUserCount} />
           <Widget type="earnings" totalEarningsData={totalEarningsData} />
-          <Widget type="balance" stat={500} />
+          {/* <Widget type="transactions" transactionsCount={transactionsCount} /> */}
         </div>
 
         <div className="charts">
@@ -68,11 +68,11 @@ const Home = ({
           <div className="listTitle">Discover Bonds</div>
           {/* <TableList /> */}
           <div className="widgets">
-            <Widget type="users" userCount={userCount} />
+            {/* <Widget type="users" userCount={userCount} />
             <Widget type="kyc" unverifiedUserCount={unverifiedUserCount} />
             <Widget type="earnings" stat={300} />
             <Widget type="balance" stat={500} />
-            <Widget type="balance" stat={500} />
+            <Widget type="balance" stat={500} /> */}
           </div>
         </div>
       </div>

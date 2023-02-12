@@ -38,6 +38,7 @@ function App() {
   const [userCount, setUserCount] = useState();
   const [unverifiedUserCount, setUnverifiedUserCount] = useState();
   const [totalEarningsData, setTotalEarningsData] = useState();
+  const [transactionsCount, setTransactionsCount] = useState();
 
   // useEffect(() => {
   //   // Fetch Users data
@@ -75,12 +76,48 @@ function App() {
     fetchUnverifiedUserCount();
   }, [unverifiedUserCount]);
 
+  // useEffect(() => {
+  //   const fetchTotalEarningsData = async () => {
+  //     const { data } = await axios.get(
+  //       `${baseUrl}/transactions/broker-earnings`
+  //     );
+  //     console.log(data.earnings);
+  //     // const { earnings, count } = data;
+  //     // console.log(count);
+  //     // setTotalEarningsData(earnings);
+  //     setTotalEarningsData(data.earnings);
+  //   };
+
+  //   fetchTotalEarningsData();
+  // });
+
   useEffect(() => {
     const fetchTotalEarningsData = async () => {
-      const data = await axios.get(`${baseUrl}/`);
-      console.log(data);
+      const { data } = await axios.get(
+        `${baseUrl}/transactions/broker-earnings`
+      );
+      // console.log(data);
+      const { earnings } = data;
+      const { count } = data;
+      setTotalEarningsData(earnings);
+      // setTransactionsCount(count);
     };
-  });
+
+    fetchTotalEarningsData();
+  }, [totalEarningsData]);
+
+  useEffect(() => {
+    const fetchTotalEarningsData = async () => {
+      const { data } = await axios.get(
+        `${baseUrl}/transactions/broker-earnings`
+      );
+      const { count } = data;
+      console.log(count);
+      setTransactionsCount(count);
+    };
+
+    fetchTotalEarningsData();
+  }, [transactionsCount]);
 
   //Fetch bonds data
   useEffect(() => {
@@ -104,8 +141,9 @@ function App() {
                 <Home
                   userCount={userCount}
                   usersData={usersData}
-                  totalEarningsData={1234}
+                  totalEarningsData={totalEarningsData}
                   unverifiedUserCount={unverifiedUserCount}
+                  transactionsCount={transactionsCount}
                 />
               }
             />

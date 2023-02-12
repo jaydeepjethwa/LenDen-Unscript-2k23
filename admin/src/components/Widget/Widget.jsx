@@ -21,6 +21,7 @@ const Widget = ({
   userCount,
   unverifiedUserCount,
   totalEarningsData,
+  transactionsCount,
 }) => {
   let data;
 
@@ -79,13 +80,12 @@ const Widget = ({
         ),
       };
       break;
-    case 'balance':
+    case 'transactions':
       data = {
-        title: 'BALANCE',
-        isMoney: true,
+        title: 'TRANSACTIONS',
+        isMoney: false,
         link: 'See Details',
-        count: 0,
-        stat: 100,
+        count: 16,
         icon: (
           <AccountBalanceWalletOutlined
             className="widgetIcon"
@@ -130,19 +130,19 @@ const Widget = ({
   return (
     <div className="widget">
       <div className="left">
-        <span className="title">{data.title}</span>
+        <span className="title">{data?.title}</span>
         {data.stat ? (
           <span className="counter">
-            {data.isMoney && <>&#8377;</>} {data.stat}
+            {data.isMoney && <>&#8377;</>} {data?.stat}
           </span>
         ) : (
           <p>loading...</p>
         )}
         <Link
-          to={data.linkTo}
+          to={data?.linkTo}
           style={{ textDecoration: 'none', color: 'inherit' }}
         >
-          <span className="link">{data.link}</span>
+          <span className="link">{data?.link}</span>
         </Link>
       </div>
       <div className="right">
@@ -150,7 +150,7 @@ const Widget = ({
           <KeyboardArrowUpOutlined />
           {diff}%
         </div> */}
-        {data.icon}
+        {data?.icon}
       </div>
     </div>
   );
