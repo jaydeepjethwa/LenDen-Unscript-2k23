@@ -13,3 +13,38 @@
 ## Problem Statement
 
 <p> In the metaverse, retail investors face challenges in navigating the complex world of bond trading, making it difficult for them to take advantage of investment opportunities. To solve this critical issue, develop a bonds trading platform that streamlines the bond trading process for retail investors.</p>
+
+
+## Solution
+
+* A Bond Trading Platform where corporate or government agencies can list their bonds, which user can trade.
+Features:
+* A KYC verified login authentication system for investors.
+* Integration with real-time bond pricing information from NSE.
+* Bond Trading (Order Matching Algorithm)
+* Portfolio management and tracking
+
+## User Journey
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218295249-d8c72bb0-5f5f-41bf-8143-5a6b5c9f4da6.jpg" width = 900>
+</kbd>
+
+
+
+## App User Interface
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218294525-56061583-77a1-40b2-97dd-87a2dab2ac20.jpg" width = 300 height=600>
+</kbd>
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218294531-a8789868-a5cd-4e89-82dc-e2c48e91b4eb.jpg" width = 300 height=600>
+</kbd>
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218294536-22d50532-2249-4aeb-8d26-99043855bc7f.jpg" width = 300 height=600>
+</kbd>
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218294539-7802b393-9049-48f5-b7e6-bd77393cb0ee.jpg" width = 300 height=600>
+</kbd>
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218295182-117e1ca1-4b1f-4dc6-8e3d-4b0feb82e10e.jpg" width = 300 height=600>
+</kbd>
+
