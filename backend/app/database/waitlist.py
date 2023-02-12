@@ -49,3 +49,16 @@ async def get_user_waitlist(user_id: int, conn: Connection):
         await cursor.close()
 
     return list
+
+
+async def get_waitlist(conn: Connection):
+    async with conn.cursor() as cursor:
+        try:
+            await cursor.execute("""SELECT * FROM waitlist, bonds WHERE waitlist.bond_id = bonds.bond_id""")
+            list = await cursor.fetchall()
+        except Exception as err:
+            print(err)
+
+        await cursor.close()
+
+    return list
