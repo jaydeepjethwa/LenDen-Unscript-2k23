@@ -32,11 +32,12 @@ import { baseUrl } from './apis/config';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
-  const [userCount, setUserCount] = useState();
 
   const [bondsData, setBondsData] = useState([]);
 
+  const [userCount, setUserCount] = useState();
   const [unverifiedUserCount, setUnverifiedUserCount] = useState();
+  const [totalEarningsData, setTotalEarningsData] = useState();
 
   // useEffect(() => {
   //   // Fetch Users data
@@ -74,6 +75,13 @@ function App() {
     fetchUnverifiedUserCount();
   }, [unverifiedUserCount]);
 
+  useEffect(() => {
+    const fetchTotalEarningsData = async () => {
+      const data = await axios.get(`${baseUrl}/`);
+      console.log(data);
+    };
+  });
+
   //Fetch bonds data
   useEffect(() => {
     const fetchUsers = async () => {
@@ -95,6 +103,8 @@ function App() {
               element={
                 <Home
                   userCount={userCount}
+                  usersData={usersData}
+                  totalEarningsData={1234}
                   unverifiedUserCount={unverifiedUserCount}
                 />
               }

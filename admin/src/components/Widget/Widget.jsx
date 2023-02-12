@@ -16,7 +16,12 @@ import {
   fetchUsersCountData,
 } from '../../apis/UserDataApis';
 
-const Widget = ({ type, userCount, unverifiedUserCount }) => {
+const Widget = ({
+  type,
+  userCount,
+  unverifiedUserCount,
+  totalEarningsData,
+}) => {
   let data;
 
   const amount = 100;
@@ -58,14 +63,18 @@ const Widget = ({ type, userCount, unverifiedUserCount }) => {
       break;
     case 'earnings':
       data = {
-        title: 'EARNINGS',
+        title: 'TOTAL EARNINGS',
         isMoney: true,
-        link: 'View Net Earnings',
+        link: 'Learn More',
         count: 0,
+        stat: totalEarningsData,
         icon: (
           <MonetizationOnOutlined
             className="widgetIcon"
-            style={{ color: 'green', backgroundColor: 'rgba(0, 128, 0, 0.2' }}
+            style={{
+              color: 'goldenrod',
+              backgroundColor: 'rgba(255, 206, 81, 0.6)',
+            }}
           />
         ),
       };
@@ -76,6 +85,7 @@ const Widget = ({ type, userCount, unverifiedUserCount }) => {
         isMoney: true,
         link: 'See Details',
         count: 0,
+        stat: 100,
         icon: (
           <AccountBalanceWalletOutlined
             className="widgetIcon"

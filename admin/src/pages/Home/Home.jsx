@@ -11,7 +11,12 @@ import {
   TableList,
 } from '../../components';
 
-const Home = ({ userCount, unverifiedUserCount }) => {
+const Home = ({
+  userCount,
+  unverifiedUserCount,
+  usersData,
+  totalEarningsData,
+}) => {
   // const [userCount, setUserCount] = useState(0);
   // const [unverifiedUserCount, setUnverifiedUserCount] = useState(0);
 
@@ -50,7 +55,7 @@ const Home = ({ userCount, unverifiedUserCount }) => {
         <div className="widgets">
           <Widget type="users" userCount={userCount} />
           <Widget type="kyc" unverifiedUserCount={unverifiedUserCount} />
-          <Widget type="earnings" stat={300} />
+          <Widget type="earnings" totalEarningsData={totalEarningsData} />
           <Widget type="balance" stat={500} />
         </div>
 
@@ -60,8 +65,15 @@ const Home = ({ userCount, unverifiedUserCount }) => {
         </div>
 
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
+          <div className="listTitle">Discover Bonds</div>
           {/* <TableList /> */}
+          <div className="widgets">
+            <Widget type="users" userCount={userCount} />
+            <Widget type="kyc" unverifiedUserCount={unverifiedUserCount} />
+            <Widget type="earnings" stat={300} />
+            <Widget type="balance" stat={500} />
+            <Widget type="balance" stat={500} />
+          </div>
         </div>
       </div>
     </div>
