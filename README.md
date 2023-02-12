@@ -44,7 +44,17 @@ Features:
 <kbd>
 <img src="https://user-images.githubusercontent.com/92046805/218294539-7802b393-9049-48f5-b7e6-bd77393cb0ee.jpg" width = 300 height=600>
 </kbd>
+
+## Web User Interface
 <kbd>
-<img src="https://user-images.githubusercontent.com/92046805/218295182-117e1ca1-4b1f-4dc6-8e3d-4b0feb82e10e.jpg" width = 300 height=600>
+<img src="https://user-images.githubusercontent.com/92046805/218295343-cc25f6e9-4941-4990-b2f0-7ad00bfa73cc.jpeg" width = 900>
 </kbd>
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218295383-30da937d-f0cb-4a5b-8353-b19694c829b0.jpeg" width = 900>
+</kbd>
+<kbd>
+<img src="https://user-images.githubusercontent.com/92046805/218295385-127d9bd3-8acb-419c-b7a0-93b4f8ac5dc2.jpeg" width = 900>
+</kbd>
+
+
 
