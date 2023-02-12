@@ -10,8 +10,8 @@ const Settings = () => {
   const [input, setInput] = useState('');
 
   const [pfInput, setPfInput] = useState(6);
-  const [bondId, setBondId] = useState();
-  const [bondPrice, setBondPrice] = useState();
+  const [bondId, setBondId] = useState(0);
+  const [bondPrice, setBondPrice] = useState(0);
 
   // useEffect(() => {
   //   getPlatformcommision();

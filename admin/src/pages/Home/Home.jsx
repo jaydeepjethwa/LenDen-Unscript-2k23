@@ -61,7 +61,7 @@ const Home = ({
 
         <div className="charts">
           <Featured />
-          <Chart title="Area Chart" aspect={2.5 / 1} />
+          <Chart title="Monthly Earnings" aspect={2.5 / 1} />
         </div>
 
         <div className="listContainer">

@@ -27,13 +27,13 @@ const usersColumns = [
 const bondsColumns = [
   // { field: 'bond_id', headerName: 'ID', width: 120 },
   { field: 'companyName', headerName: 'Company Name', width: 250 },
-  { field: 'Symbol', headerName: 'Symbol', width: 100 },
   { field: 'Series', headerName: 'Series', width: 100 },
+  { field: 'LTP', headerName: 'LTP', width: 100 },
   { field: 'BondType', headerName: 'Bond Type', width: 130 },
-  { field: 'credit_rating', headerName: 'Rating', width: 100 },
   { field: 'PercentageChange', headerName: '%age Change', width: 120 },
   { field: 'Qty', headerName: 'Quantity', width: 80 },
   { field: 'CouponRate', headerName: 'Coupon Rate (%)', width: 150 },
+  { field: 'credit_rating', headerName: 'Rating', width: 100 },
   // { field: 'released_on', headerName: 'Released On', width: 130 },
   // { field: 'maturity_date', headerName: 'Maturity Date', width: 130 },
 ];
