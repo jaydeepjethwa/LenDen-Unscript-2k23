@@ -3,7 +3,7 @@ import {
   DashboardOutlined,
   PersonOutlineOutlined,
   FeedOutlined,
-  CreditCardOutlined,
+  HourglassTopOutlined,
   ViewCarouselOutlined,
   SettingsOutlined,
   LogoutOutlined,
@@ -12,7 +12,6 @@ import {
 import { Link } from 'react-router-dom';
 
 import './Sidebar.scss';
-
 const Sidebar = () => {
   return (
     <div className="sidebarComp">
@@ -47,20 +46,20 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          {/* <Link to="/orders" style={{ textDecoration: 'none' }}>
+          <Link to="/waitlist" style={{ textDecoration: 'none' }}>
             <li>
-              <CreditCardOutlined className="icon" />
-              <span>Orders</span>
-            </li>
-          </Link> */}
-
-          <p className="title">USEFUL</p>
-          <Link to="/banners" style={{ textDecoration: 'none' }}>
-            <li>
-              <ViewCarouselOutlined className="icon" />
-              <span>Featured Bonds</span>
+              <HourglassTopOutlined className="icon" />
+              <span>Waitlist</span>
             </li>
           </Link>
+
+          <p className="title">USEFUL</p>
+          {/* <Link to="/banners" style={{ textDecoration: 'none' }}>
+            <li>
+              <ViewCarouselOutlined className="icon" />
+              <span>W</span>
+            </li>
+          </Link> */}
 
           <Link to="/bonds/new" style={{ textDecoration: 'none' }}>
             <li>
