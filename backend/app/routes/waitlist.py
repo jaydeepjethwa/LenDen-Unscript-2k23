@@ -17,8 +17,8 @@ async def join_waitlist(wait: Waitlist, conn: Connection = Depends(Database.get_
 
 
 @waitlist_router.get("/")
-async def all_waitlist(user_id: int, conn: Connection = Depends(Database.get_db)):
-    list = await get_waitlist(user_id, conn)
+async def all_waitlist(conn: Connection = Depends(Database.get_db)):
+    list = await get_waitlist(conn)
 
     return list
 
