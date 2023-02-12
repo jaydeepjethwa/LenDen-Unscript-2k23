@@ -4,6 +4,8 @@ import 'package:unscript/constant/color.dart';
 import 'package:unscript/constant/size.dart';
 import 'package:unscript/constant/textstyle.dart';
 import 'package:unscript/controller/bond/bond_purchase_controller.dart';
+import 'package:unscript/presentation/widget/custom_long_button.dart';
+import 'package:unscript/presentation/widget/custom_textfield.dart';
 
 class BondPurchaseScreen extends GetView<BondPurchaseController> {
   const BondPurchaseScreen({super.key});
@@ -76,9 +78,12 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _bondPurchaseItem("IS IN", controller.bond.isin),
-                        _bondPurchaseItem("Maturity Date", controller.bond.maturityDate),
-                        _bondPurchaseItem("Bond Type", controller.bond.bondType.name),
-                        _bondPurchaseItem("Coupon Interest", controller.bond.couponRate.toString()),
+                        _bondPurchaseItem(
+                            "Maturity Date", controller.bond.maturityDate),
+                        _bondPurchaseItem(
+                            "Bond Type", controller.bond.bondType.name),
+                        _bondPurchaseItem("Coupon Interest",
+                            controller.bond.couponRate.toString()),
                       ],
                     ),
                     Column(
@@ -86,15 +91,17 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                       children: [
                         _bondPurchaseItem("High", controller.bond.high),
                         _bondPurchaseItem("Low", controller.bond.low),
-                        _bondPurchaseItem("Last Traded Price", controller.bond.ltp),
-                        _bondPurchaseItem("Value", controller.bond.value.toString()),
+                        _bondPurchaseItem(
+                            "Last Traded Price", controller.bond.ltp),
+                        _bondPurchaseItem(
+                            "Value", controller.bond.value.toString()),
                       ],
                     ),
                   ],
                 ),
                 verticalSpacing(vs1),
-                _bondPurchaseItem(
-                    "Company Name", controller.bond.companyName),
+                _bondPurchaseItem("Company Name", controller.bond.companyName),
+                 _bondPurchaseItem("Qty", controller.bond.qty.toString()),
                 verticalSpacing(vs2),
                 Container(
                   width: getWidth(context) - 40,
@@ -128,7 +135,7 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                       ),
                       Text(
                         controller.bond.ratingAgency,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -141,11 +148,19 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                   children: [
                     ElevatedButton(
                       onPressed: () {},
-                      child: Text("Purchase Later", style: buttonStyle,),
+                      child: Text(
+                        "Purchase Later",
+                        style: buttonStyle,
+                      ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Purchase Now", style: buttonStyle,),
+                      onPressed: () {
+                        openBottomSheet(context);
+                      },
+                      child: Text(
+                        "Purchase Now",
+                        style: buttonStyle,
+                      ),
                     ),
                   ],
                 ),
@@ -154,6 +169,99 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
           ),
         ),
       ),
+    );
+  }
+
+  void openBottomSheet(BuildContext context) {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Text(
+                controller.bond.companyName,
+                style: header2.copyWith(fontWeight: FontWeight.bold),
+              ),
+              verticalSpacing(vs2 * 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Price : ${controller.bond.ltp}",
+                    style: header2.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "Available Qty : ${controller.bond.qty}",
+                    style: header2.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              verticalSpacing(vs2),
+              Container(
+                margin: const EdgeInsets.only(bottom: 10.0),
+                width: getWidth(context) - horizontalPadding,
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  controller: controller.qtyC,
+                  decoration: InputDecoration(
+                    hintText: "Qty",
+                    hintStyle: hintText,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 5.0),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: blue,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  onChanged: ((val) {
+                    if (val != "") {
+                      controller.cartValue.value = (double.parse(val) *
+                          double.parse(controller.bond.ltp));
+                    } else {
+                      controller.cartValue.value = 0.0;
+                    }
+                  }),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => Text(
+                      "Total Value : ${controller.cartValue.value.toString()}",
+                      style: paraStyle,
+                    ),
+                  ),
+                  Obx(
+                    () => Text(
+                      "Balance : ${controller.balance.value}",
+                      style: paraStyle.copyWith(
+                          color: Colors.green, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpacing(vs2),
+              CustomLongButton(
+                buttonText: "Buy Bond",
+                onPressedFunction: () {
+                  controller.handleApiCall();
+                },
+              ),
+              verticalSpacing(vs2)
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      elevation: 0,
     );
   }
 

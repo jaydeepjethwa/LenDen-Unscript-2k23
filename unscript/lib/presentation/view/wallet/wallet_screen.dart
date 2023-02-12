@@ -27,7 +27,7 @@ class WalletScreen extends GetView<WalletController> {
             ),
             horizontalSpacing(5.0),
             Text(
-              "KYC Details",
+              "Wallet",
               style: normalText.copyWith(
                 color: blue,
                 fontWeight: FontWeight.bold,
@@ -38,50 +38,52 @@ class WalletScreen extends GetView<WalletController> {
         ),
         elevation: 0.7,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            verticalSpacing(vs2),
-            Container(
-              width: getWidth(context) - 40.0,
-              decoration: BoxDecoration(
-                color: lightGrey,
-                borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(color: blue, width: 2.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "\u{20B9} 23455678",
-                      style: TextStyle(
-                        fontSize: 40.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpacing(vs2),
+              Container(
+                width: getWidth(context) - 40.0,
+                decoration: BoxDecoration(
+                  color: lightGrey,
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(color: blue, width: 2.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 50.0),
+                  child: Obx(
+                    () => Column(
+                      children: [
+                        Text(
+                          "\u{20B9} ${controller.balance.value.toString()}",
+                          style: const TextStyle(
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        verticalSpacing(vs1),
+                        Text(
+                          "Current Balance",
+                          style: paraStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ],
                     ),
-                    verticalSpacing(vs1),
-                    Text(
-                      "Current Balance",
-                      style: paraStyle.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-            verticalSpacing(100.0),
-            Text(
-              "Add Money to your wallet",
-              style: header2,
-            ),
-            verticalSpacing(vs2),
-            Expanded(
-              child: CustomTextField(
+              verticalSpacing(100.0),
+              Text(
+                "Add Money to your wallet",
+                style: header2,
+              ),
+              verticalSpacing(vs2),
+              CustomTextField(
                 capitalization: false,
                 textController: controller.moneyC,
                 hint: "Add Money",
@@ -96,13 +98,15 @@ class WalletScreen extends GetView<WalletController> {
                 },
                 keyboardType: TextInputType.number,
               ),
-            ),
-            CustomLongButton(
-              buttonText: "Deposit Money",
-              onPressedFunction: () {},
-            ),
-            verticalSpacing(vs2),
-          ],
+              verticalSpacing(50.0),
+              CustomLongButton(
+                buttonText: "Deposit Money",
+                onPressedFunction: () {
+                  controller.handleApiCall();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
