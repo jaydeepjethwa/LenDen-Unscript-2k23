@@ -65,8 +65,8 @@ class KYCController extends GetxController {
       bool response = await apiCall();
       if (response) {
         Get.back();
-        DialogHelper.showSnackbar("KYC Updated Successfully");
         Get.back();
+        DialogHelper.showSnackbar("KYC Updated Successfully");
       } else {
         print("Error");
         Get.back();

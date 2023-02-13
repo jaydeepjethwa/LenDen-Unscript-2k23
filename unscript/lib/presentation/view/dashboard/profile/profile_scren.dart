@@ -51,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                 },
               ),
               _profileItem(
-                "Wishlist",
+                "Waitlist",
                 Icons.bookmark,
                 () {
                   Get.toNamed("/waitList");

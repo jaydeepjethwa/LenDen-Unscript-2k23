@@ -45,7 +45,7 @@ class CustomBondCard extends StatelessWidget {
                 children: [
                   _bondCardItem(
                     "Bond Type",
-                    bond.bondType.name,
+                    bond.bondType,
                   ),
                   horizontalSpacing(hs1 * 3),
                   _bondCardItem("Qty", "1200"),

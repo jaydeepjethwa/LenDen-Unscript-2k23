@@ -81,7 +81,7 @@ class BondPurchaseScreen extends GetView<BondPurchaseController> {
                         _bondPurchaseItem(
                             "Maturity Date", controller.bond.maturityDate),
                         _bondPurchaseItem(
-                            "Bond Type", controller.bond.bondType.name),
+                            "Bond Type", controller.bond.bondType),
                         _bondPurchaseItem("Coupon Interest",
                             controller.bond.couponRate.toString()),
                       ],

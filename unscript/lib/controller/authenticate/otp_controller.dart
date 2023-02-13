@@ -6,11 +6,14 @@ import 'package:unscript/utils/dialog_helper.dart';
 class OtpController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController otpC1, otpC2, otpC3, otpC4;
+  late String email;
 
   @override
   void onInit() {
     super.onInit();
     initializeController();
+    email = Get.arguments[0]["email"];
+    storage.remove("email");
   }
 
   void initializeController() {

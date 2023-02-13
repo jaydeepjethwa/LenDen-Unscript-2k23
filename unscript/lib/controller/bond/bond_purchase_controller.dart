@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:unscript/constant/constant.dart';
 import 'package:unscript/controller/bond/bond_controller.dart';
+import 'package:unscript/controller/portfolio/portfolio_controller.dart';
 import 'package:unscript/model/bond_model.dart';
 import 'package:unscript/service/base_client.dart';
 import 'package:unscript/service/error_controller.dart';
@@ -77,6 +78,7 @@ class BondPurchaseController extends GetxController with ErrorController {
       Get.back();
       Get.back();
       Get.put(BondController()).getAllBonds();
+      Get.put(PortfolioController()).getAllData();
     }
   }
 

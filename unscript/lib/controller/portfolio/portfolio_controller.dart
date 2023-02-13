@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:unscript/constant/constant.dart';
+import 'package:unscript/controller/bond/bond_controller.dart';
 import 'package:unscript/model/portfolio_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:unscript/service/base_client.dart';
@@ -86,6 +87,7 @@ class PortfolioController extends GetxController with ErrorController {
       Get.back();
       Get.back();
       getAllData();
+      Get.put(BondController()).getAllBonds();
     }
   }
 }

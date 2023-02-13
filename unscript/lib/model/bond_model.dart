@@ -35,7 +35,7 @@ class BondModel {
     int bondId;
     String symbol;
     String series;
-    BondType bondType;
+    String bondType;
     String open;
     String high;
     String low;
@@ -57,7 +57,7 @@ class BondModel {
         bondId: json["bond_id"],
         symbol: json["Symbol"],
         series: json["Series"],
-        bondType: bondTypeValues.map[json["BondType"]]!,
+        bondType: json["BondType"],
         open: json["Open"],
         high: json["High"],
         low: json["Low"],
@@ -80,7 +80,7 @@ class BondModel {
         "bond_id": bondId,
         "Symbol": symbol,
         "Series": series,
-        "BondType": bondTypeValues.reverse[bondType],
+        "BondType": bondType,
         "Open": open,
         "High": high,
         "Low": low,
@@ -100,34 +100,3 @@ class BondModel {
     };
 }
 
-enum BondType { REGULAR, EMPTY }
-
-final bondTypeValues = EnumValues({
-    "": BondType.EMPTY,
-    "Regular": BondType.REGULAR
-});
-
-// enum CreditRating { AAA, AA, EMPTY, CREDIT_RATING_AA, PURPLE_AA, A, CREDIT_RATING_A, PURPLE_A }
-
-// final creditRatingValues = EnumValues({
-//     "A": CreditRating.A,
-//     "AA+": CreditRating.AA,
-//     "AAA": CreditRating.AAA,
-//     "A+": CreditRating.CREDIT_RATING_A,
-//     "AA": CreditRating.CREDIT_RATING_AA,
-//     "": CreditRating.EMPTY,
-//     "A-": CreditRating.PURPLE_A,
-//     "AA-": CreditRating.PURPLE_AA
-// });
-
-class EnumValues<T> {
-    Map<String, T> map;
-    late Map<T, String> reverseMap;
-
-    EnumValues(this.map);
-
-    Map<T, String> get reverse {
-        reverseMap = map.map((k, v) => MapEntry(v, k));
-        return reverseMap;
-    }
-}

@@ -37,7 +37,7 @@ class TransactionCard extends StatelessWidget {
                 Text(
                   "\u{20B9} ${transaction.transactionPrice * transaction.quantity}",
                   style: TextStyle(
-                    color: transaction.type.name == "BUY" ?  red : Colors.green,
+                    color: transaction.type == "BUY" ?  red : Colors.green,
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),

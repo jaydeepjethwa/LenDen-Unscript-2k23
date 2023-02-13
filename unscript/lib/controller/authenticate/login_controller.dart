@@ -52,7 +52,12 @@ class LoginController extends GetxController with ErrorController {
       formKey.currentState!.save();
       bool response = await apiCall();
       if (response) {
-        Get.toNamed("/otp");
+        Get.toNamed(
+          "/otp",
+          arguments: [
+            {"email": email},
+          ],
+        );
       } else {
         Get.back();
       }

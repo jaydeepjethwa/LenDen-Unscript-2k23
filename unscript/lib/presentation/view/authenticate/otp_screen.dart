@@ -47,7 +47,7 @@ class OTPScreen extends GetView<OtpController> {
               text:
                   TextSpan(text: "Code sent to ", style: paraStyle, children: [
                 TextSpan(
-                  text: "abhishek@gmail.com",
+                  text: controller.email,
                   style: paraStyle.copyWith(color: blue),
                 ),
               ]),

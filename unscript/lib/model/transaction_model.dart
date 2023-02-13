@@ -47,11 +47,11 @@ class TransactionModel {
     int quantity;
     double transactionPrice;
     int userId;
-    Type type;
+    String type;
     int bondsBondId;
-    Symbol symbol;
-    Series series;
-    BondType bondType;
+    String symbol;
+    String series;
+    String bondType;
     String open;
     String high;
     String low;
@@ -61,7 +61,7 @@ class TransactionModel {
     int qty;
     double value;
     double couponRate;
-    CreditRating creditRating;
+    String creditRating;
     String ratingAgency;
     int faceValue;
     String maturityDate;
@@ -78,11 +78,11 @@ class TransactionModel {
         quantity: json["quantity"],
         transactionPrice: json["transaction_price"]?.toDouble(),
         userId: json["user_id"],
-        type: typeValues.map[json["type"]]!,
+        type: json["type"]!,
         bondsBondId: json["bonds.bond_id"],
-        symbol: symbolValues.map[json["Symbol"]]!,
-        series: seriesValues.map[json["Series"]]!,
-        bondType: bondTypeValues.map[json["BondType"]]!,
+        symbol: json["Symbol"],
+        series: json["Series"],
+        bondType: json["BondType"]!,
         open: json["Open"],
         high: json["High"],
         low: json["Low"],
@@ -92,7 +92,7 @@ class TransactionModel {
         qty: json["Qty"],
         value: json["Value"]?.toDouble(),
         couponRate: json["CouponRate"]?.toDouble(),
-        creditRating: creditRatingValues.map[json["credit_rating"]]!,
+        creditRating: json["credit_rating"],
         ratingAgency: json["rating_agency"],
         faceValue: json["face_value"],
         maturityDate: json["maturity_date"],
@@ -110,11 +110,11 @@ class TransactionModel {
         "quantity": quantity,
         "transaction_price": transactionPrice,
         "user_id": userId,
-        "type": typeValues.reverse[type],
+        "type": type,
         "bonds.bond_id": bondsBondId,
-        "Symbol": symbolValues.reverse[symbol],
-        "Series": seriesValues.reverse[series],
-        "BondType": bondTypeValues.reverse[bondType],
+        "Symbol": symbol,
+        "Series": series,
+        "BondType": bondType,
         "Open": open,
         "High": high,
         "Low": low,
@@ -124,7 +124,7 @@ class TransactionModel {
         "Qty": qty,
         "Value": value,
         "CouponRate": couponRate,
-        "credit_rating": creditRatingValues.reverse[creditRating],
+        "credit_rating": creditRating,
         "rating_agency": ratingAgency,
         "face_value": faceValue,
         "maturity_date": maturityDate,
@@ -136,49 +136,3 @@ class TransactionModel {
     };
 }
 
-enum BondType { REGULAR }
-
-final bondTypeValues = EnumValues({
-    "Regular": BondType.REGULAR
-});
-
-enum CreditRating { AAA, AA }
-
-final creditRatingValues = EnumValues({
-    "AA+": CreditRating.AA,
-    "AAA": CreditRating.AAA
-});
-
-enum Series { N2, N6 }
-
-final seriesValues = EnumValues({
-    "N2": Series.N2,
-    "N6": Series.N6
-});
-
-enum Symbol { NHAI, NHBTF2014, HUDCO }
-
-final symbolValues = EnumValues({
-    "HUDCO": Symbol.HUDCO,
-    "NHAI": Symbol.NHAI,
-    "NHBTF2014": Symbol.NHBTF2014
-});
-
-enum Type { BUY, SELL }
-
-final typeValues = EnumValues({
-    "BUY": Type.BUY,
-    "SELL": Type.SELL
-});
-
-class EnumValues<T> {
-    Map<String, T> map;
-    late Map<T, String> reverseMap;
-
-    EnumValues(this.map);
-
-    Map<T, String> get reverse {
-        reverseMap = map.map((k, v) => MapEntry(v, k));
-        return reverseMap;
-    }
-}
